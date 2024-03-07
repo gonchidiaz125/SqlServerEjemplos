@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SQLServerEjemplos</title>
-
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body >
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <nav class="col-md-3 col-lg-2 d-md-block  sidebar">
                     <div class="sidebar-sticky">
 
                         <ul class="nav flex-column">
@@ -70,9 +70,12 @@
                     </div>
             </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <section class="section" id="ejemplo1">Recuperacion de datos básica</section>
+                <section class="section" id="ejemplo1">
+                    <h2>Recuperacion de datos básica</h2>
+                    <p>SELECT es esencial para recuperar y manipular datos almacenados en una base de datos, permitiendo a los desarrolladores y administradores realizar consultas personalizadas para obtener la información que necesitan.</p>
+                </section>
                 <div id="ejemplo1" class="my-4 contenedor-ejemplo">
-                    <h2>Sección 1</h2>
+                    <h4>SELECT INNER JOIN</h4>
                     <p>Recuperación de datos vinculando tablas con INNER JOIN </p>
                     <p>Obtener las ordenes de venta para una fecha dada, mostrando los datos del cliente</p>
 
@@ -89,9 +92,9 @@
                         </pre>                     
                     </div>
                     
-                    <button><a href="https://dbfiddle.uk/_YbppGDv" target="_blank">Ver en Playground</a></button>
+                    <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/_YbppGDv" target="_blank" style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                     <div id="ejemplo1" class="my-4">
-                        <h2>Select Top</h2>
+                        <h4>SELECT TOP</h4>
                         <p>Obtenemos el top 5 en ordenes de ventas</p>
     
                         <div class="codigo-fuente">
@@ -101,24 +104,31 @@
         <span class="sql-statement">FROM</span> Sales.SalesOrderHeader S            
                             </pre>                     
                         </div>                    
-                        <button><a href="https://dbfiddle.uk/rlVbUCEM" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/rlVbUCEM" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
                     
                 <div id="ejemplo1" class="my-4">
-                    <h2>SELECT LEFT JOIN</h2>
+                    <h4>SELECT LEFT JOIN</h4>
                     <p>Contenido de la sección 2...</p>
 
                     <div class="codigo-fuente">
                         <pre>
-        
+
+        <span class="sql-statement">SELECT</span> C.CustomerID, C.PersonID, C.StoreID, 
+            <span class="sql-statement">CASE WHEN</span> C.PersonID <span class="sql-operator">IS NOT NULL</span> <span class="sql-statement">THEN</span><span class="sql-string"> 'Person' </span><span class="sql-statement">ELSE</span> <span class="sql-string">'Store'</span> <span class="sql-statement">END AS</span> CustomerType,
+            <span class="sql-statement">CASE WHEN</span> C.PersonID <span class="sql-operator">IS NOT NULL</span> <span class="sql-statement">THEN</span> Per.LastName +  <span class="sql-string">', '</span> + Per.FirstName <span class="sql-statement">ELSE</span> S.Name <span class="sql-statement">END AS</span> CustomerName	
+        <span class="sql-statement">FROM</span> Sales.Customer C
+            <span class="sql-operator">LEFT JOIN</span> Person.Person Per <span class="sql-statement">ON</span> C.PersonID = Per.BusinessEntityID
+            <span class="sql-operator">LEFT JOIN</span> Sales.Store S <span class="sql-statement">ON</span> C.StoreID = S.BusinessEntityID
+        <span class="sql-statement">WHERE</span> C.CustomerID <span class="sql-operator">BETWEEN</span> 697 <span class="sql-operator">AND</span> 11010 
                         </pre>                     
                     </div>                    
-                    <button><a href="" target="_blank">Ver en Playground</a></button>
+                    <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/N0HFs02P" target="_blank" style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                     
                 </div>
                 <div id="ejemplo1" class="my-4">
-                    <h2>SELECT UNION</h2>
+                    <h4>SELECT UNION</h4>
                     <p>Contenido de la sección 2...</p>
 
                     <div class="codigo-fuente">
@@ -126,27 +136,30 @@
         
                         </pre>                     
                     </div>                    
-                    <button><a href="" target="_blank">Ver en Playground</a></button>
+                    <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                     
                 </div>
 
                 </div>
-                <section class="section" id="ejemplo2">Filtrado (WHERE)</section>
+                <section class="section" id="ejemplo2">
+                    <h2>Filtrado (WHERE)</h2>
+                    <p>La cláusula WHERE es esencial para limitar los resultados de una consulta a las filas que cumplen con ciertos criterios, permitiéndote extraer información específica de tu base de datos.</p>
+                </section>
                 <div id="ejemplo2" class="my-4 contenedor-ejemplo">
                     <div id="ejemplo2" class="my-4">
-                        <h2>Sección 2</h2>
-                        <p>Contenido de la sección 2...</p>
+                        <h4>WHERE filtrando por YEAR</h4>
+                        <p> </p>
     
                         <div class="codigo-fuente">
                             <pre>
             
                             </pre>                     
                         </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
                     <div id="ejemplo2" class="my-4">
-                        <h2>Sección 2</h2>
+                        <h4>WHERE filtrando por YEAR() and MONTH()</h4>
                         <p>Contenido de la sección 2...</p>
     
                         <div class="codigo-fuente">
@@ -154,11 +167,11 @@
             
                             </pre>                     
                         </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
                     <div id="ejemplo2" class="my-4">
-                        <h2>Sección 2</h2>
+                        <h4>WHERE filtrando con BETWEEN</h4>
                         <p>Contenido de la sección 2...</p>
     
                         <div class="codigo-fuente">
@@ -166,11 +179,11 @@
             
                             </pre>                     
                         </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
                     <div id="ejemplo2" class="my-4">
-                        <h2>Sección 2</h2>
+                        <h4>WHERE filtrando con Subquery > IN</h4>
                         <p>Contenido de la sección 2...</p>
     
                         <div class="codigo-fuente">
@@ -178,11 +191,11 @@
             
                             </pre>                     
                         </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
                     <div id="ejemplo2" class="my-4">
-                        <h2>Sección 2</h2>
+                        <h4>WHERE filtrando con LIKE</h4>
                         <p>Contenido de la sección 2...</p>
     
                         <div class="codigo-fuente">
@@ -190,40 +203,35 @@
             
                             </pre>                     
                         </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
-                    <div id="ejemplo2" class="my-4">
-                        <h2>Sección 2</h2>
-                        <p>Contenido de la sección 2...</p>
-    
-                        <div class="codigo-fuente">
-                            <pre>
-            
-                            </pre>                     
-                        </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
-                        
-                    </div>
-                    
                 </div>
-                <section class="section" id="ejemplo3">Recuperacion de datos básica</section>
+                <section class="section" id="ejemplo3">
+                    <h2>Consultas agrupadas</h2>
+                    <p></p>
+                </section>
                 
                     <div id="ejemplo3" class="my-4 contenedor-ejemplo">
                        
                         <div id="ejemplo3" class="my-4">
-                            <h2>Sección 3 </h2>
-                            <p>Contenido de la sección 2...</p>
+                            <h4>GROUP BY: COUNT(*)</h4>
+                            <p></p>
         
                             <div class="codigo-fuente">
                                 <pre>
-                
+
+        <span class="sql-statement">SELECT</span> <span class="sql-function">YEAR</span>(S.OrderDate) <span class="sql-statement">AS</span> [Year], <span class="sql-function">MONTH</span>(S.OrderDate) <span class="sql-statement">AS</span> [Month], <span class="sql-function">COUNT</span><span class="sql-operator">(*)</span> <span class="sql-statement">AS</span> SalesOrdersCount
+        <span class="sql-statement">FROM</span> Sales.SalesOrderHeader S
+        <span class="sql-statement">WHERE</span> S.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-12-31'</span>
+        <span class="sql-statement">GROUP BY</span> <span class="sql-function">YEAR</span>(S.OrderDate), <span class="sql-function">MONTH</span>(S.OrderDate) 
+        <span class="sql-statement">ORDER BY</span> [Year], [Month]
                                 </pre>                     
                             </div> 
                         </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/Oki_Ly9N" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         <div id="ejemplo3" class="my-4">
-                            <h2>Sección 3</h2>
+                            <h4>Sección 3</h4>
                             <p>Contenido de la sección 2...</p>
         
                             <div class="codigo-fuente">
@@ -231,11 +239,11 @@
                 
                                 </pre>                     
                             </div>                    
-                            <button><a href="" target="_blank">Ver en Playground</a></button>
+                            <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                             
                         </div>
                         <div id="ejemplo3" class="my-4">
-                            <h2>Sección 3</h2>
+                            <h4>Sección 3</h4>
                             <p>Contenido de la sección 2...</p>
         
                             <div class="codigo-fuente">
@@ -243,11 +251,11 @@
                 
                                 </pre>                     
                             </div>                    
-                            <button><a href="" target="_blank">Ver en Playground</a></button>
+                            <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                             
                         </div>
                         <div id="ejemplo3" class="my-4">
-                            <h2>Sección 3</h2>
+                            <h4>Sección 3</h4>
                             <p>Contenido de la sección 2...</p>
         
                             <div class="codigo-fuente">
@@ -255,11 +263,11 @@
                 
                                 </pre>                     
                             </div>                    
-                            <button><a href="" target="_blank">Ver en Playground</a></button>
+                            <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                             
                         </div>
                         <div id="ejemplo3" class="my-4">
-                            <h2>Sección 3</h2>
+                            <h4>Sección 3</h4>
                             <p>Contenido de la sección 2...</p>
         
                             <div class="codigo-fuente">
@@ -267,7 +275,7 @@
                 
                                 </pre>                     
                             </div>                    
-                            <button><a href="" target="_blank">Ver en Playground</a></button>
+                            <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                             
                         </div>
                         
@@ -275,17 +283,17 @@
                 <section class="sección" id="ejemplo4">Recuperacion de datos básica</section>
                 <div id="ejemplo4" class="my-4 contenedor-ejemplo">
                     <div id="ejemplo4" class="my-4">
-                        <h2>Sección 4</h2>
+                        <h4>Sección 4</h4>
                         <p>Contenido de la sección 2...</p>
                         <div class="codigo-fuente">
                             <pre>
             
                             </pre>                     
                         </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                     </div>
                     <div id="ejemplo4" class="my-4">
-                        <h2>Sección 4</h2>
+                        <h4>Sección 4</h4>
                         <p>Contenido de la sección 2...</p>
     
                         <div class="codigo-fuente">
@@ -293,11 +301,11 @@
             
                             </pre>                     
                         </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
                     <div id="ejemplo4" class="my-4">
-                        <h2>Sección 4</h2>
+                        <h4>Sección 4</h4>
                         <p>Contenido de la sección 2...</p>
     
                         <div class="codigo-fuente">
@@ -305,11 +313,11 @@
             
                             </pre>                     
                         </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
                     <div id="ejemplo4" class="my-4">
-                        <h2>Sección 4</h2>
+                        <h4>Sección 4</h4>
                         <p>Contenido de la sección 2...</p>
     
                         <div class="codigo-fuente">
@@ -317,38 +325,38 @@
             
                             </pre>                     
                         </div>                    
-                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
                 </div>
                 <section class="section" id="ejemplo5">Recuperacion de datos básica</section>
                 <div id="ejemplo5" class="my-4">
-                    <h2>Sección 5</h2>
+                    <h4>Sección 5</h4>
                     <p>Contenido de la sección 2...</p>
                 </div>
                 <section class="section" id="ejemplo6">Recuperacion de datos básica</section>
                 <div id="ejemplo6" class="my-4">
-                    <h2>Sección 6</h2>
+                    <h4>Sección 6</h4>
                     <p>Contenido de la sección 2...</p>
                 </div>
                 <section class="section" id="ejemplo7">Recuperacion de datos básica</section>
                 <div id="ejemplo7" class="my-4">
-                    <h2>Sección 7</h2>
+                    <h4>Sección 7</h4>
                     <p>Contenido de la sección 2...</p>
                 </div>
                 <section class="section" id="ejemplo8">Recuperacion de datos básica</section>
                 <div id="ejemplo8" class="my-4">
-                    <h2>Sección 8</h2>
+                    <h4>Sección 8</h4>
                     <p>Contenido de la sección 2...</p>
                 </div>
                 <section class="section" id="ejemplo9">Recuperacion de datos básica</section>
                 <div id="ejemplo9" class="my-4">
-                    <h2>Sección 9</h2>
+                    <h4>Sección 9</h4>
                     <p>Contenido de la sección 2...</p>
                 </div>
                 <section class="section" id="ejemplo10">Recuperacion de datos básica</section>
                 <div id="ejemplo10" class="my-4">
-                    <h2>Sección 10</h2>
+                    <h4>Sección 10</h4>
                     <p>Contenido de la sección 2...</p>
                 </div>
 
