@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SQLServerEjemplos</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body >
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+
+                        <ul class="nav flex-column">
+                            <li class="nav-item" >
+                                <a class="nav-link active" href="#ejemplo1">
+                                SELECT   
+                                </a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ejemplo2">
+                                WHERE
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ejemplo3">
+                                    Ejemplo 3
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ejemplo4">
+                                    Ejemplo 4
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ejemplo5">
+                                    Ejemplo 5
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ejemplo6">
+                                    Ejemplo 6
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ejemplo7">
+                                    Ejemplo 7
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ejemplo8">
+                                    Ejemplo 8
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ejemplo9">
+                                    Ejemplo 9
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ejemplo10">
+                                    Ejemplo 10
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <section class="section" id="ejemplo1">Recuperacion de datos básica</section>
+                <div id="ejemplo1" class="my-4 contenedor-ejemplo">
+                    <h2>Sección 1</h2>
+                    <p>Recuperación de datos vinculando tablas con INNER JOIN </p>
+                    <p>Obtener las ordenes de venta para una fecha dada, mostrando los datos del cliente</p>
+
+                    <div class="codigo-fuente">
+                        <pre>
+
+        <span class="sql-statement">SELECT </span> S.SalesOrderID, S.CustomerID, P.FirstName, P.LastName, P.MiddleName,
+                S.OrderDate, S.SalesOrderNumber, S.TotalDue
+        <span class="sql-statement">FROM</span> Sales.SalesOrderHeader S
+            <span class="sql-operator">INNER JOIN</span> Sales.Customer C ON S.CustomerID = C.CustomerID
+            <span class="sql-operator">INNER JOIN</span> Person.Person P ON C.PersonID = P.BusinessEntityID
+        <span class="sql-statement">WHERE</span> S.OrderDate = <span class="sql-string">'2011-05-31' </span>
+        <span class="sql-statement">ORDER BY</span> S.SalesOrderID
+                        </pre>                     
+                    </div>
+                    
+                    <button><a href="https://dbfiddle.uk/_YbppGDv" target="_blank">Ver en Playground</a></button>
+                    <div id="ejemplo1" class="my-4">
+                        <h2>Select Top</h2>
+                        <p>Obtenemos el top 5 en ordenes de ventas</p>
+    
+                        <div class="codigo-fuente">
+                            <pre>
+    
+        <span class="sql-statement">SELECT TOP </span> 5 *        
+        <span class="sql-statement">FROM</span> Sales.SalesOrderHeader S            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="https://dbfiddle.uk/rlVbUCEM" target="_blank">Ver en Playground</a></button>
+                        
+                    </div>
+                    
+                <div id="ejemplo1" class="my-4">
+                    <h2>SELECT LEFT JOIN</h2>
+                    <p>Contenido de la sección 2...</p>
+
+                    <div class="codigo-fuente">
+                        <pre>
+        
+                        </pre>                     
+                    </div>                    
+                    <button><a href="" target="_blank">Ver en Playground</a></button>
+                    
+                </div>
+                <div id="ejemplo1" class="my-4">
+                    <h2>SELECT UNION</h2>
+                    <p>Contenido de la sección 2...</p>
+
+                    <div class="codigo-fuente">
+                        <pre>
+        
+                        </pre>                     
+                    </div>                    
+                    <button><a href="" target="_blank">Ver en Playground</a></button>
+                    
+                </div>
+
+                </div>
+                <section class="section" id="ejemplo2">Filtrado (WHERE)</section>
+                <div id="ejemplo2" class="my-4 contenedor-ejemplo">
+                    <div id="ejemplo2" class="my-4">
+                        <h2>Sección 2</h2>
+                        <p>Contenido de la sección 2...</p>
+    
+                        <div class="codigo-fuente">
+                            <pre>
+            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        
+                    </div>
+                    <div id="ejemplo2" class="my-4">
+                        <h2>Sección 2</h2>
+                        <p>Contenido de la sección 2...</p>
+    
+                        <div class="codigo-fuente">
+                            <pre>
+            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        
+                    </div>
+                    <div id="ejemplo2" class="my-4">
+                        <h2>Sección 2</h2>
+                        <p>Contenido de la sección 2...</p>
+    
+                        <div class="codigo-fuente">
+                            <pre>
+            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        
+                    </div>
+                    <div id="ejemplo2" class="my-4">
+                        <h2>Sección 2</h2>
+                        <p>Contenido de la sección 2...</p>
+    
+                        <div class="codigo-fuente">
+                            <pre>
+            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        
+                    </div>
+                    <div id="ejemplo2" class="my-4">
+                        <h2>Sección 2</h2>
+                        <p>Contenido de la sección 2...</p>
+    
+                        <div class="codigo-fuente">
+                            <pre>
+            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        
+                    </div>
+                    <div id="ejemplo2" class="my-4">
+                        <h2>Sección 2</h2>
+                        <p>Contenido de la sección 2...</p>
+    
+                        <div class="codigo-fuente">
+                            <pre>
+            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        
+                    </div>
+                    
+                </div>
+                <section class="section" id="ejemplo3">Recuperacion de datos básica</section>
+                
+                    <div id="ejemplo3" class="my-4 contenedor-ejemplo">
+                       
+                        <div id="ejemplo3" class="my-4">
+                            <h2>Sección 3 </h2>
+                            <p>Contenido de la sección 2...</p>
+        
+                            <div class="codigo-fuente">
+                                <pre>
+                
+                                </pre>                     
+                            </div> 
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        <div id="ejemplo3" class="my-4">
+                            <h2>Sección 3</h2>
+                            <p>Contenido de la sección 2...</p>
+        
+                            <div class="codigo-fuente">
+                                <pre>
+                
+                                </pre>                     
+                            </div>                    
+                            <button><a href="" target="_blank">Ver en Playground</a></button>
+                            
+                        </div>
+                        <div id="ejemplo3" class="my-4">
+                            <h2>Sección 3</h2>
+                            <p>Contenido de la sección 2...</p>
+        
+                            <div class="codigo-fuente">
+                                <pre>
+                
+                                </pre>                     
+                            </div>                    
+                            <button><a href="" target="_blank">Ver en Playground</a></button>
+                            
+                        </div>
+                        <div id="ejemplo3" class="my-4">
+                            <h2>Sección 3</h2>
+                            <p>Contenido de la sección 2...</p>
+        
+                            <div class="codigo-fuente">
+                                <pre>
+                
+                                </pre>                     
+                            </div>                    
+                            <button><a href="" target="_blank">Ver en Playground</a></button>
+                            
+                        </div>
+                        <div id="ejemplo3" class="my-4">
+                            <h2>Sección 3</h2>
+                            <p>Contenido de la sección 2...</p>
+        
+                            <div class="codigo-fuente">
+                                <pre>
+                
+                                </pre>                     
+                            </div>                    
+                            <button><a href="" target="_blank">Ver en Playground</a></button>
+                            
+                        </div>
+                        
+                    </div>
+                <section class="sección" id="ejemplo4">Recuperacion de datos básica</section>
+                <div id="ejemplo4" class="my-4 contenedor-ejemplo">
+                    <div id="ejemplo4" class="my-4">
+                        <h2>Sección 4</h2>
+                        <p>Contenido de la sección 2...</p>
+                        <div class="codigo-fuente">
+                            <pre>
+            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                    </div>
+                    <div id="ejemplo4" class="my-4">
+                        <h2>Sección 4</h2>
+                        <p>Contenido de la sección 2...</p>
+    
+                        <div class="codigo-fuente">
+                            <pre>
+            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        
+                    </div>
+                    <div id="ejemplo4" class="my-4">
+                        <h2>Sección 4</h2>
+                        <p>Contenido de la sección 2...</p>
+    
+                        <div class="codigo-fuente">
+                            <pre>
+            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        
+                    </div>
+                    <div id="ejemplo4" class="my-4">
+                        <h2>Sección 4</h2>
+                        <p>Contenido de la sección 2...</p>
+    
+                        <div class="codigo-fuente">
+                            <pre>
+            
+                            </pre>                     
+                        </div>                    
+                        <button><a href="" target="_blank">Ver en Playground</a></button>
+                        
+                    </div>
+                </div>
+                <section class="section" id="ejemplo5">Recuperacion de datos básica</section>
+                <div id="ejemplo5" class="my-4">
+                    <h2>Sección 5</h2>
+                    <p>Contenido de la sección 2...</p>
+                </div>
+                <section class="section" id="ejemplo6">Recuperacion de datos básica</section>
+                <div id="ejemplo6" class="my-4">
+                    <h2>Sección 6</h2>
+                    <p>Contenido de la sección 2...</p>
+                </div>
+                <section class="section" id="ejemplo7">Recuperacion de datos básica</section>
+                <div id="ejemplo7" class="my-4">
+                    <h2>Sección 7</h2>
+                    <p>Contenido de la sección 2...</p>
+                </div>
+                <section class="section" id="ejemplo8">Recuperacion de datos básica</section>
+                <div id="ejemplo8" class="my-4">
+                    <h2>Sección 8</h2>
+                    <p>Contenido de la sección 2...</p>
+                </div>
+                <section class="section" id="ejemplo9">Recuperacion de datos básica</section>
+                <div id="ejemplo9" class="my-4">
+                    <h2>Sección 9</h2>
+                    <p>Contenido de la sección 2...</p>
+                </div>
+                <section class="section" id="ejemplo10">Recuperacion de datos básica</section>
+                <div id="ejemplo10" class="my-4">
+                    <h2>Sección 10</h2>
+                    <p>Contenido de la sección 2...</p>
+                </div>
+
+            </main>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+
