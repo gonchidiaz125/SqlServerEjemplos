@@ -3,40 +3,25 @@ body {
     
 }
 .sidebar {
-    background-color:rgb(215, 231, 241);
+    position: sticky;
+    top: 0;
+    height: 100vh; /* Ajusta la altura según sea necesario */
+    overflow-y: auto;
+}
+
+.sidebar-content {
+    padding: 15px; /* Ajusta el relleno según sea necesario */
+}
+
+.sidebar-content a.nav-link {
+    color: #000; /* Color de texto normal */
+    transition: color 0.3s; /* Transición para el cambio de color */
+}
+
+.sidebar-content a.nav-link:hover {
+    background-color: rgb(147, 207, 245);
+    color: #070707; /* Color de texto al pasar el cursor sobre el enlace */
     border-radius: 7px;
-}
-@media (max-width: 767.98px) {
-    .sidebar {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1000;
-        padding-top: 56px; /* Ajusta según la altura del navbar si es necesario */
-        width: 100%;
-        
-    }
-
-    .main-content {
-        margin-left: 0;
-    }
-}
-
-@media (min-width: 768px) {
-    .sidebar {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1000;
-        padding-top: 56px; /* Ajusta según la altura del navbar si es necesario */
-        width: 250px; /* Ancho deseado para pantallas grandes */
-    }
-
-    .main-content {
-        margin-left: 250px; /* Ancho del sidebar en pantallas grandes */
-    }
 }
 .encabezado {
     background-color: rgb(147, 207, 245);
