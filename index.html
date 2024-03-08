@@ -70,8 +70,13 @@
                     </div>
             </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <section class="encabezado">
+                    <h1> EJEMPLOS  DE SQL SERVER</h1> 
+                    <p>Aquí podrán ver consultas realizadas a una base de datos "AdventureWorks" que se dedica a la venta de bicicletas y artículos para ciclismo, la cual brinda Mircrosoft, donde existen diferentes tablas con informacion visible para poder extraer datos y mostrar ejemplos complejos como los que veran a continuación y podran probar ustedes mismos a traves del boton "Playground", donde se mostrara la consulta y su resultado. </p>
+                </section>
+                <br>
                 <section class="section" id="ejemplo1">
-                    <h2>Recuperacion de datos básica</h2>
+                    <h2>Recuperación de datos básica</h2>
                     <p>SELECT es esencial para recuperar y manipular datos almacenados en una base de datos, permitiendo a los desarrolladores y administradores realizar consultas personalizadas para obtener la información que necesitan.</p>
                 </section>
                 <div id="ejemplo1" class="my-4 contenedor-ejemplo">
@@ -100,9 +105,19 @@
                         <div class="codigo-fuente">
                             <pre>
     
-        <span class="sql-statement">SELECT TOP </span> 5 *        
-        <span class="sql-statement">FROM</span> Sales.SalesOrderHeader S            
-                            </pre>                     
+        <span class="sql-statement">SELECT TOP</span> 10 P.ProductID, P.Name <span class="sql-statement">AS</span> ProductName, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity
+        <span class="sql-statement">INTO</span> #Top10
+        <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
+            <span class="sql-operator">INNER JOIN</span> Sales.SalesOrderHeader H <span class="sql-statement">ON</span> D.SalesOrderID = H.SalesOrderID
+            <span class="sql-operator">INNER JOIN</span> Production.Product P <span class="sql-statement">ON</span> D.ProductID = P.ProductID
+        <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-12-31'</span>
+        <span class="sql-statement">GROUP BY</span> P.ProductID, P.Name 
+        <span class="sql-statement">ORDER BY</span> ProductQuantity <span class="sql-statement">DESC</span>
+        
+        <span class="sql-statement">SELECT</span> * <span class="sql-statement">FROM</span> #Top10 
+        
+        <span class="sql-statement">DROP TABLE</span> #Top10
+    </pre>                     
                         </div>                    
                         <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/rlVbUCEM" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         

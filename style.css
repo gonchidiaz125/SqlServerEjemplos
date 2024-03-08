@@ -38,9 +38,14 @@ body {
         margin-left: 250px; /* Ancho del sidebar en pantallas grandes */
     }
 }
+.encabezado {
+    background-color: rgb(147, 207, 245);
+    padding: 15px;
+    border-radius: 7px;
+}
 
 .section {
-    background-color: rgb(215, 231, 241);
+    background-color: rgb(172, 216, 243);
     padding: 15px;
     border-radius: 7px;
 }
@@ -74,7 +79,7 @@ pre {
 }
 
 .contenedor-ejemplo {
-    background-color: rgb(219, 219, 219);
+    background-color: rgb(171, 190, 201);
     padding: 15px;
     border-radius: 7px;
 }
