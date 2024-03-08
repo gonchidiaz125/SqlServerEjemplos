@@ -19,16 +19,16 @@
                         <ul class="nav flex-column">
                             <li class="nav-item" >
                                 <a class="nav-link active" href="#ejemplo1">
-                                SELECT   
+                                RECUPERACION DE DATOS BASICA   
                                 </a>
                             <li class="nav-item">
                                 <a class="nav-link" href="#ejemplo2">
-                                WHERE
+                                FILTRADO DE DATOS
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#ejemplo3">
-                                GROUP BY : COUNT (*)
+                                CONSULTAS AGRUPADAS
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -231,15 +231,51 @@
                         </div>                    
                         <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/Oki_Ly9N" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         <div id="ejemplo3" class="my-4">
-                            <h4>Sección 3</h4>
+                            <h4>Funciones MIN, MAX, SUM, COUNT, AVG</h4>
                             <p>Contenido de la sección 2...</p>
         
                             <div class="codigo-fuente">
                                 <pre>
+
+                                    
+        <span class="sql-statement">SELECT TOP</span> 10 P.ProductID, P.Name <span class="sql-statement">AS</span> ProductName, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity
+        <span class="sql-statement">INTO</span> #Top10
+        <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
+            <span class="sql-operator">INNER JOIN</span> Sales.SalesOrderHeader H <span class="sql-statement">ON</span> D.SalesOrderID = H.SalesOrderID
+            <span class="sql-operator">INNER JOIN</span> Production.Product P <span class="sql-statement">ON</span> D.ProductID = P.ProductID
+        <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-12-31'</span>
+        <span class="sql-statement">GROUP BY</span> P.ProductID, P.Name 
+        <span class="sql-statement">ORDER BY</span> ProductQuantity <span class="sql-statement">DESC</span>
+
+
+        <span class="sql-statement">SELECT</span> P.ProductID, P.ProductName, P.ProductQuantity, 
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 1 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> Janury,
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 2 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> February,
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 3 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> March,
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 4 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> April,
+
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 5 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> May,
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 6 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> June,
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 7 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> July,
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 8 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> August,
+
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 9 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> September,
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 10 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> October,
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 11 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> November,
+            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 12 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> December
+
+        <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
+            <span class="sql-operator">INNER JOIN</span> Sales.SalesOrderHeader H <span class="sql-statement">ON</span> D.SalesOrderID = H.SalesOrderID
+            <span class="sql-operator">INNER JOIN</span> #TOP10 P <span class="sql-statement">ON</span> D.ProductID = P.ProductID
+        <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-12-31'</span>
+        <span class="sql-statement">GROUP BY</span> P.ProductID, P.ProductName, P.ProductQuantity
+        <span class="sql-statement">ORDER BY</span> 3 <span class="sql-statement">DESC</span>
+
+        <span class="sql-statement">DROP TABLE</span> #Top10
                 
                                 </pre>                     
                             </div>                    
-                            <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
+                            <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/vtBmmUOE" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                             
                         </div>
                         <div id="ejemplo3" class="my-4">
