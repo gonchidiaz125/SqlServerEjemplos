@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SQLServerEjemplos</title>
-    <link href="./style.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="./style.css" rel="stylesheet">
 </head>
 
 <body >
@@ -15,64 +14,65 @@
         <div class="row">
             <nav class="col-md-3 col-lg-2 d-md-block  sidebar">
                     <div class="sidebar-sticky">
-
-                        <ul class="nav flex-column">
-                            <li class="nav-item" >
-                                <a class="nav-link active" href="#ejemplo1">
-                                RECUPERACION DE DATOS BASICA   
-                                </a>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#ejemplo2">
-                                FILTRADO DE DATOS
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#ejemplo3">
-                                CONSULTAS AGRUPADAS
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#ejemplo4">
-                                    Ejemplo 4
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#ejemplo5">
-                                    TABLAS TEMPORALES
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#ejemplo6">
-                                    Ejemplo 6
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#ejemplo7">
-                                    Ejemplo 7
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#ejemplo8">
-                                    Ejemplo 8
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#ejemplo9">
-                                    Ejemplo 9
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#ejemplo10">
-                                    Ejemplo 10
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="sidebar-content">
+                            <ul class="nav flex-column">
+                                <li class="nav-item" >
+                                    <a class="nav-link active" href="#ejemplo1">
+                                    Recuperación de datos básica  
+                                    </a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#ejemplo2">
+                                    Filtrado de datos
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#ejemplo3">
+                                    Consultas agrupadas
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#ejemplo4">
+                                        Ejemplo 4
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#ejemplo5">
+                                    Tablas temporales   
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#ejemplo6">
+                                        Ejemplo 6
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#ejemplo7">
+                                        Ejemplo 7
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#ejemplo8">
+                                        Ejemplo 8
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#ejemplo9">
+                                        Ejemplo 9
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#ejemplo10">
+                                        Ejemplo 10
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
             </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <section class="encabezado">
                     <h1> EJEMPLOS  DE SQL SERVER</h1> 
-                    <p>Aquí podrán ver consultas realizadas a una base de datos "AdventureWorks" que se dedica a la venta de bicicletas y artículos para ciclismo, la cual brinda Mircrosoft, donde existen diferentes tablas con informacion visible para poder extraer datos y mostrar ejemplos complejos como los que veran a continuación y podran probar ustedes mismos a traves del boton "Playground", donde se mostrara la consulta y su resultado. </p>
+                    <p>Aquí podrán ver consultas realizadas a una base de datos "AdventureWorks" que se dedica a la venta de bicicletas y artículos para ciclismo, la cual brinda Microsoft, donde existen diferentes tablas con información visible para poder extraer datos y mostrar ejemplos complejos como los que verán a continuación y podrán probar ustedes mismos a través del botón "Playground", donde se mostrara la consulta y su resultado.</p>
                 </section>
                 <br>
                 <section class="section" id="ejemplo1">
@@ -100,7 +100,7 @@
                     <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/_YbppGDv" target="_blank" style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                     <div id="ejemplo1" class="my-4">
                         <h4>SELECT TOP</h4>
-                        <p>Obtenemos el top 10 en Productos mas vendidos en el año 2012</p>
+                        <p>Obtener el top 10 en Productos mas vendidos en el año 2012</p>
     
                         <div class="codigo-fuente">
                             <pre>
