@@ -24,13 +24,13 @@ body {
     border-radius: 7px;
 }
 .encabezado {
-    background-color: rgb(147, 207, 245);
+    background-color: rgb(220, 235, 245);
     padding: 15px;
     border-radius: 7px;
 }
 
 .section {
-    background-color: rgb(172, 216, 243);
+    background-color: rgb(220, 235, 245);
     padding: 15px;
     border-radius: 7px;
 }
@@ -64,7 +64,7 @@ pre {
 }
 
 .contenedor-ejemplo {
-    background-color: rgb(171, 190, 201);
+    background-color: rgb(220, 235, 245);
     padding: 15px;
     border-radius: 7px;
 }
