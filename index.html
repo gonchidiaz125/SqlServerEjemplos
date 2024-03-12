@@ -69,8 +69,8 @@
                 </section>
                 <div id="ejemplo1" class="my-4 contenedor-ejemplo">
                     <h4>SELECT INNER JOIN</h4>
-                    <p>Recuperación de datos vinculando tablas con INNER JOIN </p>
-                    <p>Obtener las órdenes de venta para una fecha dada, mostrando los datos del cliente</p>
+                    <p>Se utiliza INNER JOIN cuando queremos recuperar datos que tienen relaciones definidas entre dos o más tablas. Se seleccionan solo las filas que tienen valores coincidentes en ambas tablas. </p>
+                    <p>- Obtener las órdenes de venta para una fecha dada, mostrando los datos del cliente</p>
 
                     <div class="codigo-fuente">
                         <pre>
@@ -88,7 +88,8 @@
                     <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/_YbppGDv" target="_blank" style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                     <div id="ejemplo1" class="my-4">
                         <h4>SELECT TOP</h4>
-                        <p>Obtener el top 10 en Productos más vendidos en el año 2012</p>
+                        <p>Se usa para seleccionar las primeras N filas de un conjunto de resultados. Esto puede ser útil cuando solo estás interesado en ver una cantidad limitada de datos.</p>
+                        <p>- Obtener el top 10 en Productos más vendidos en el año 2012</p>
     
                         <div class="codigo-fuente">
                             <pre>
@@ -113,7 +114,8 @@
                     
                 <div id="ejemplo1" class="my-4">
                     <h4>SELECT LEFT JOIN</h4>
-                    <p>Contenido de la sección 2...</p>
+                    <p>Devuelve todas las filas de la tabla izquierda y las filas coincidentes de la tabla derecha. Si no hay coincidencias en la tabla derecha, devuelve valores NULL en las columnas seleccionadas de la tabla derecha</p>
+                    <p>- Obtener nombre y apellido de persona o nombre en caso de que sea empresa, si no es persona devuelve NULL en ese campo y viceversa. </p>
 
                     <div class="codigo-fuente">
                         <pre>
@@ -132,8 +134,8 @@
                 </div>
                 <div id="ejemplo1" class="my-4">
                     <h4>SELECT UNION</h4>
-                    <p>Contenido de la sección 2...</p>
-
+                    <p>Se utiliza para combinar los resultados de dos o más consultas en una sola lista de resultados. La función principal de UNION es eliminar duplicados y fusionar las filas de resultados de múltiples consultas en una única lista de resultados.</p>
+                    <p>- </p>
                     <div class="codigo-fuente">
                         <pre>
         
@@ -152,7 +154,7 @@
                 
                     <div id="ejemplo2" class="my-4">
                         <h4>WHERE filtrando por YEAR</h4>
-                        <p> </p>
+                        <p>la función YEAR() se utiliza para extraer el año de una fecha específica. Puedes utilizar esta función en la cláusula WHERE para filtrar las filas de una tabla basadas en el año de una columna de tipo fecha. </p>
     
                         <div class="codigo-fuente">
                             <pre>
