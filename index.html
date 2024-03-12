@@ -135,10 +135,23 @@
                 <div id="ejemplo1" class="my-4">
                     <h4>SELECT UNION</h4>
                     <p>Se utiliza para combinar los resultados de dos o más consultas en una sola lista de resultados. La función principal de UNION es eliminar duplicados y fusionar las filas de resultados de múltiples consultas en una única lista de resultados.</p>
-                    <p>- </p>
+                    <p>- Obtener los datos de una serie de clientes, los cuales pueden
+                        ser personas físicas o negocios.</p>
                     <div class="codigo-fuente">
                         <pre>
-        
+        <span class="sql-statement">SELECT</span> C.CustomerID, C.PersonID, C.StoreID, 	
+            Per.LastName +  ', ' + Per.FirstName <span class="sql-statement">AS</span> CustomerName,
+            <span class="sql-string">'Person'</span> <span class="sql-statement">AS</span> CustomerType
+        <span class="sql-statement">FROM</span> Sales.Customer C
+            <span class="sql-statement">INNER JOIN</span> Person.Person Per <span class="sql-statement">ON</span> C.PersonID = Per.BusinessEntityID            
+        <span class="sql-statement">WHERE</span> C.CustomerID <span class="sql-operator">BETWEEN</span> 697 <span class="sql-operator">AND</span> 11010 
+        <span class="sql-statement">UNION</span>
+        <span class="sql-statement">SELECT</span> C.CustomerID, C.PersonID, C.StoreID, 
+            S.Name as CustomerName,
+            <span class="sql-string">'Store'</span> <span class="sql-statement">AS</span> CustomerType
+        <span class="sql-statement">FROM</span> Sales.Customer C            
+            <span class="sql-statement">INNER JOIN</span> Sales.Store S <span class="sql-statement">ON</span> C.StoreID = S.BusinessEntityID
+        <span class="sql-statement">WHERE</span> C.CustomerID <span class="sql-operator">BETWEEN</span> 697 <span class="sql-operator">AND</span> 11010 
                         </pre>                     
                     </div>                    
                     <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
