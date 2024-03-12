@@ -37,12 +37,12 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#ejemplo4">
-                                        Ejemplo 4
+                                    Tablas temporales
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#ejemplo5">
-                                    Tablas temporales   
+                                    Procedimientos almacenados 
                                     </a>
                                 </li>
                             </ul>
@@ -52,8 +52,8 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <section class="encabezado" id="introduccion" >
                     <h1> EJEMPLOS  DE SQL SERVER</h1> 
-                    <p>Aquí podrán ver consultas realizadas a una base de datos <a href="https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms" target="blank">"AdventureWorks"</a>  que se dedica a la venta de bicicletas y artículos para ciclismo, la cual brinda Mircrosoft, donde existen diferentes tablas con información visible para poder extraer datos y mostrar ejemplos complejos como los que verán a continuación.</p>
-                    <p><strong>Importante: </strong>No será necesario descarcar la base de datos. Todos los ejemplo se pueden probar haciendo click en el botón "Playground", donde se mostrara la consulta y su resultado en una base de datos disponible online.</p>
+                    <p>Aquí podrán ver consultas realizadas a una base de datos <a href="https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms" target="blank">"AdventureWorks"</a>  que se dedica a la venta de bicicletas y artículos para ciclismo, la cual brinda Microsoft, donde existen diferentes tablas con información visible para poder extraer datos y mostrar ejemplos complejos como los que verán a continuación.</p>
+                    <p><strong>Importante: </strong>No será necesario descargar la base de datos. Todos los ejemplos se pueden probar haciendo click en el botón "Playground", donde se mostrará la consulta y su resultado en una base de datos disponible online.</p>
                         
                         
                     <p>En los ejemplos utilizaremos las tablas relacionadas a órdenes de compras (<code>SalesOrderHeader</code> y <code>SalesOrderDetail</code>), productos (<code>Product</code>) y clientes (<code>Customer</code>). Estos últimos podrán ser personas físicas o negocios (<code>Person</code> y <code>Store</code>).</p>
@@ -70,7 +70,7 @@
                 <div id="ejemplo1" class="my-4 contenedor-ejemplo">
                     <h4>SELECT INNER JOIN</h4>
                     <p>Recuperación de datos vinculando tablas con INNER JOIN </p>
-                    <p>Obtener las ordenes de venta para una fecha dada, mostrando los datos del cliente</p>
+                    <p>Obtener las órdenes de venta para una fecha dada, mostrando los datos del cliente</p>
 
                     <div class="codigo-fuente">
                         <pre>
@@ -88,7 +88,7 @@
                     <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/_YbppGDv" target="_blank" style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                     <div id="ejemplo1" class="my-4">
                         <h4>SELECT TOP</h4>
-                        <p>Obtener el top 10 en Productos mas vendidos en el año 2012</p>
+                        <p>Obtener el top 10 en Productos más vendidos en el año 2012</p>
     
                         <div class="codigo-fuente">
                             <pre>
@@ -144,11 +144,12 @@
                 </div>
 
                 </div>
+                <div id="ejemplo2" class="my-4 contenedor-ejemplo">
                 <section class="section" id="ejemplo2">
                     <h2>Filtrado (WHERE)</h2>
                     <p>La cláusula WHERE es esencial para limitar los resultados de una consulta a las filas que cumplen con ciertos criterios, permitiéndote extraer información específica de tu base de datos.</p>
                 </section>
-                <div id="ejemplo2" class="my-4 contenedor-ejemplo">
+                
                     <div id="ejemplo2" class="my-4">
                         <h4>WHERE filtrando por YEAR</h4>
                         <p> </p>
@@ -161,61 +162,14 @@
                         <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
-                    <div id="ejemplo2" class="my-4">
-                        <h4>WHERE filtrando por YEAR() and MONTH()</h4>
-                        <p>Contenido de la sección 2...</p>
-    
-                        <div class="codigo-fuente">
-                            <pre>
-            
-                            </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        
-                    </div>
-                    <div id="ejemplo2" class="my-4">
-                        <h4>WHERE filtrando con BETWEEN</h4>
-                        <p>Contenido de la sección 2...</p>
-    
-                        <div class="codigo-fuente">
-                            <pre>
-            
-                            </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        
-                    </div>
-                    <div id="ejemplo2" class="my-4">
-                        <h4>WHERE filtrando con Subquery > IN</h4>
-                        <p>Contenido de la sección 2...</p>
-    
-                        <div class="codigo-fuente">
-                            <pre>
-            
-                            </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        
-                    </div>
-                    <div id="ejemplo2" class="my-4">
-                        <h4>WHERE filtrando con LIKE</h4>
-                        <p>Contenido de la sección 2...</p>
-    
-                        <div class="codigo-fuente">
-                            <pre>
-            
-                            </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        
-                    </div>
                 </div>
-                <section class="section" id="ejemplo3">
-                    <h2>Consultas agrupadas</h2>
-                    <p></p>
-                </section>
-                
-                    <div id="ejemplo3" class="my-4 contenedor-ejemplo">
+                <div id="ejemplo3" class="my-4 contenedor-ejemplo">
+                    <section class="section" id="ejemplo3">
+                        <h2>Consultas agrupadas</h2>
+                        <p></p>
+                    </section>
+                    
+                    
                        
                         <div id="ejemplo3" class="my-4">
                             <h4>GROUP BY: COUNT(*)</h4>
@@ -281,105 +235,17 @@
                             <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/vtBmmUOE" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                             
                         </div>
-                        <div id="ejemplo3" class="my-4">
-                            <h4>Sección 3</h4>
-                            <p>Contenido de la sección 2...</p>
-        
-                            <div class="codigo-fuente">
-                                <pre>
-                
-                                </pre>                     
-                            </div>                    
-                            <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                            
-                        </div>
-                        <div id="ejemplo3" class="my-4">
-                            <h4>Sección 3</h4>
-                            <p>Contenido de la sección 2...</p>
-        
-                            <div class="codigo-fuente">
-                                <pre>
-                
-                                </pre>                     
-                            </div>                    
-                            <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                            
-                        </div>
-                        <div id="ejemplo3" class="my-4">
-                            <h4>Sección 3</h4>
-                            <p>Contenido de la sección 2...</p>
-        
-                            <div class="codigo-fuente">
-                                <pre>
-                
-                                </pre>                     
-                            </div>                    
-                            <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                            
-                        </div>
-                        
                     </div>
-                <section class="sección" id="ejemplo4">
+                    <div id="ejemplo4" class="my-4 contenedor-ejemplo">
+                        <section class="section" id="ejemplo4">
+                            <h2>TABLAS TEMPORALES</h2>
+                        </section>
                     
-                    <p></p>
-                </section>
-                <div id="ejemplo4" class="my-4 contenedor-ejemplo">
-                    <div id="ejemplo4" class="my-4">
-                        <h4>Sección 4</h4>
-                        <p>Contenido de la sección 2...</p>
-                        <div class="codigo-fuente">
-                            <pre>
-            
-                            </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                    </div>
-                    <div id="ejemplo4" class="my-4">
-                        <h4>Sección 4</h4>
-                        <p>Contenido de la sección 2...</p>
-    
-                        <div class="codigo-fuente">
-                            <pre>
-            
-                            </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        
-                    </div>
-                    <div id="ejemplo4" class="my-4">
-                        <h4>Sección 4</h4>
-                        <p>Contenido de la sección 2...</p>
-    
-                        <div class="codigo-fuente">
-                            <pre>
-            
-                            </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        
-                    </div>
-                    <div id="ejemplo4" class="my-4">
-                        <h4>Sección 4</h4>
-                        <p>Contenido de la sección 2...</p>
-    
-                        <div class="codigo-fuente">
-                            <pre>
-            
-                            </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        
-                    </div>
-                </div>
-                <section class="section" id="ejemplo5">
-                    <h2>TABLAS TEMPORALES</h2>
-                </section>
-                <div id="ejemplo5" class="my-4 contenedor-ejemplo">
-                    <div id="ejemplo5" class="my-4">
-                        <h4>INTO # </h4>
-                        <p></p>
-                        <div class="codigo-fuente">
-                            <pre>
+                       <div id="ejemplo4" class="my-4">
+                            <h4>INTO # </h4>
+                            <p></p>
+                            <div class="codigo-fuente">
+                                <pre>
 
         <span class="sql-statement">SELECT TOP</span> 10 P.ProductID, p.Name <span class="sql-statement">AS</span> ProductName, SUM(D.OrderQty) as ProductQuantity
         <span class="sql-statement">INTO</span> #Top10  
@@ -401,13 +267,36 @@
 
         <span class="sql-statement">DROP TABLE</span> #Top10
             
-                            </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/92jqZ281" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
+                                </pre>                     
+                            </div>                    
+                            <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/92jqZ281" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
+                         </div>
+           
                     </div>
-            </main>
+         
+                    <div id="ejemplo5" class="my-4 contenedor-ejemplo">
+                        <section class="section" id="ejemplo5">
+                            <h2>PROCEDIMIENTOS ALMACENADOS</h2>
+                            <p>
+
+                            </p>
+                        </section>
+                    
+                        <div id="ejemplo5" class="my-4">
+                            <h4>Sección 4</h4>
+                            <p>Contenido de la sección 2...</p>
+                            <div class="codigo-fuente">
+                                <pre>
+
+                                </pre>                     
+                            </div>                    
+                            <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
         </div>
-    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
