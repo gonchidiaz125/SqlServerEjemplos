@@ -115,7 +115,7 @@
                 <div id="ejemplo1" class="my-4">
                     <h4>SELECT LEFT JOIN</h4>
                     <p>Devuelve todas las filas de la tabla izquierda y las filas coincidentes de la tabla derecha. Si no hay coincidencias en la tabla derecha, devuelve valores NULL en las columnas seleccionadas de la tabla derecha</p>
-                    <p>- Obtener nombre y apellido de persona o nombre en caso de que sea empresa, si no es persona devuelve NULL en ese campo y viceversa. </p>
+                    <p>- Obtener datos de los clientes, en este caso nombre y apellido si es persona y si no lo es, nombre de la empresa. </p>
 
                     <div class="codigo-fuente">
                         <pre>
@@ -135,8 +135,7 @@
                 <div id="ejemplo1" class="my-4">
                     <h4>SELECT UNION</h4>
                     <p>Se utiliza para combinar los resultados de dos o más consultas en una sola lista de resultados. La función principal de UNION es eliminar duplicados y fusionar las filas de resultados de múltiples consultas en una única lista de resultados.</p>
-                    <p>- Obtener los datos de una serie de clientes, los cuales pueden
-                        ser personas físicas o negocios.</p>
+                    <p>- Obtener los datos de una serie de clientes, si es persona nombre y apellido, si no lo es, nombre de la empresa. Ejemplo muy parecido al anterior pero las consultas se hacen por separado</p>
                     <div class="codigo-fuente">
                         <pre>
         <span class="sql-statement">SELECT</span> C.CustomerID, C.PersonID, C.StoreID, 	
@@ -167,20 +166,26 @@
                 
                     <div id="ejemplo2" class="my-4">
                         <h4>WHERE filtrando por YEAR</h4>
-                        <p>la función YEAR() se utiliza para extraer el año de una fecha específica. Puedes utilizar esta función en la cláusula WHERE para filtrar las filas de una tabla basadas en el año de una columna de tipo fecha. </p>
-    
+                        <p>La función YEAR() se utiliza para extraer el año de una fecha específica. Se Puede utilizar esta función con WHERE para filtrar las filas de una tabla basadas en el año de una columna de tipo fecha. </p>
+                        <p>- Obtener el top 10 de las ordenes de compra en el año 2013 ordenados de mayor a menor de acuerdo al monto total.</p>
+                        <p></p>
                         <div class="codigo-fuente">
                             <pre>
-            
+
+        <span class="sql-statement">SELECT TOP</span> 10 *  
+        <span class="sql-statement">FROM</span>  Sales.SalesOrderHeader O
+        <span class="sql-statement">WHERE</span> 
+        <span class="sql-function">YEAR</span>(OrderDate) = 2013
+        <span class="sql-statement">ORDER BY</span> TotalDue <span class="sql-statement">DESC</span>
                             </pre>                     
                         </div>                    
-                        <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
+                        <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/OMzOkwij" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         
                     </div>
                 </div>
                 <div id="ejemplo3" class="my-4 contenedor-ejemplo">
                     <section class="section" id="ejemplo3">
-                        <h2>Consultas agrupadas</h2>
+                        <h2>CONSULTAS AGRUPADAS</h2>
                         <p></p>
                     </section>
                     
@@ -188,7 +193,8 @@
                        
                         <div id="ejemplo3" class="my-4">
                             <h4>GROUP BY: COUNT(*)</h4>
-                            <p></p>
+                            <p>La cláusula GROUP BY se utiliza para agrupar filas que tienen los mismos valores en una o más columnas en conjuntos separados. Luego, la función COUNT(*) se utiliza para contar el número de filas en cada grupo resultante.</p>
+                            <p>- Obtener cantidad de ordenes de compra por mes en un mismo año </p>
         
                             <div class="codigo-fuente">
                                 <pre>
@@ -204,52 +210,28 @@
                         <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/Oki_Ly9N" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                         <div id="ejemplo3" class="my-4">
                             <h4>Funciones MIN, MAX, SUM, COUNT, AVG</h4>
-                            <p>Contenido de la sección 2...</p>
+                            <p>Son funciones de agregación que se utilizan comúnmente para realizar cálculos sobre conjuntos de datos en consultas SQL. </p>
+                            <p>- Obtener cantidad de ordenes de compra por mes en un mismo año, con las compras de mayor y menor importe, y el importe promedio.</p>
         
                             <div class="codigo-fuente">
                                 <pre>
 
-                                    
-        <span class="sql-statement">SELECT TOP</span> 10 P.ProductID, P.Name <span class="sql-statement">AS</span> ProductName, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity
-        <span class="sql-statement">INTO</span> #Top10
-        <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
-            <span class="sql-operator">INNER JOIN</span> Sales.SalesOrderHeader H <span class="sql-statement">ON</span> D.SalesOrderID = H.SalesOrderID
-            <span class="sql-operator">INNER JOIN</span> Production.Product P <span class="sql-statement">ON</span> D.ProductID = P.ProductID
-        <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-12-31'</span>
-        <span class="sql-statement">GROUP BY</span> P.ProductID, P.Name 
-        <span class="sql-statement">ORDER BY</span> ProductQuantity <span class="sql-statement">DESC</span>
-
-
-        <span class="sql-statement">SELECT</span> P.ProductID, P.ProductName, P.ProductQuantity, 
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 1 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> Janury,
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 2 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> February,
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 3 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> March,
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 4 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> April,
-
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 5 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> May,
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 6 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> June,
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 7 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> July,
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 8 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> August,
-
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 9 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> September,
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 10 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> October,
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 11 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> November,
-            <span class="sql-function">SUM</span>(<span class="sql-statement">CASE WHEN</span> <span class="sql-function">MONTH</span>(H.OrderDate) = 12 <span class="sql-statement">THEN</span> D.OrderQty <span class="sql-statement">ELSE</span> 0 <span class="sql-statement">END</span>) <span class="sql-statement">AS</span> December
-
-        <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
-            <span class="sql-operator">INNER JOIN</span> Sales.SalesOrderHeader H <span class="sql-statement">ON</span> D.SalesOrderID = H.SalesOrderID
-            <span class="sql-operator">INNER JOIN</span> #TOP10 P <span class="sql-statement">ON</span> D.ProductID = P.ProductID
-        <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-12-31'</span>
-        <span class="sql-statement">GROUP BY</span> P.ProductID, P.ProductName, P.ProductQuantity
-        <span class="sql-statement">ORDER BY</span> 3 <span class="sql-statement">DESC</span>
-
-        <span class="sql-statement">DROP TABLE</span> #Top10
-                
+        <span class="sql-statement">SELECT</span> <span class="sql-funtion">YEAR</span>(S.OrderDate) <span class="sql-statement">AS</span> [Year], <span class="sql-funtion">MONTH</span>(S.OrderDate) <span class="sql-statement">AS</span> [Month], 
+            <span class="sql-function">COUNT</span><span class="sql-operator">(*)</span> <span class="sql-statement">AS</span> SalesOrdersCount, 
+            <span class="sql-function">SUM</span>(S.TotalDue) <span class="sql-statement">AS</span>TotalDue,
+            <span class="sql-function">AVG</span>(S.TotalDue) <span class="sql-statement">AS</span> AvgTotalDue,
+            <span class="sql-function">MIN</span>(S.TotalDue) <span class="sql-statement">AS</span> MinTotalDue,
+            <span class="sql-function">MAX</span>(S.TotalDue) <span class="sql-statement">AS</span> MaxTotalDue
+        <span class="sql-statement">FROM </span> Sales.SalesOrderHeader S
+        <span class="sql-statement">WHERE</span> S.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-12-31'</span>
+        <span class="sql-statement">GROUP BY</span> <span class="sql-function">YEAR</span>(S.OrderDate), <span class="sql-function">MONTH</span>(S.OrderDate) 
+        <span class="sql-statement">ORDER BY</span> [Year], [Month]                                    
                                 </pre>                     
                             </div>                    
-                            <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/vtBmmUOE" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
+                            <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/OYf1yeZ9" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
                             
                         </div>
+                        
                     </div>
                     <div id="ejemplo4" class="my-4 contenedor-ejemplo">
                         <section class="section" id="ejemplo4">
