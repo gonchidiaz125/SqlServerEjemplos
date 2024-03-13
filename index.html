@@ -1,79 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>SQLServerEjemplos</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./style.css" rel="stylesheet">
-</head>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="./style.css" rel="stylesheet" />
+  </head>
 
-<body >
+  <body>
     <div class="container-fluid">
-        <div class="row">
-            <nav class="col-md-3 col-lg-2 d-md-block  sidebar">
-                    <div class="sidebar-sticky">
-                        <div class="sidebar-content">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#introduccion">
-                                     Introduccion
-                                    </a>
-                                </li>
-                                <li class="nav-item" >
-                                    <a class="nav-link active" href="#ejemplo1">
-                                    Recuperación de datos básica  
-                                    </a>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#ejemplo2">
-                                    Filtrado de datos
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#ejemplo3">
-                                    Consultas agrupadas
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#ejemplo4">
-                                    Tablas temporales
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#ejemplo5">
-                                    Procedimientos almacenados 
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-            </nav>
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <section class="encabezado" id="introduccion" >
-                    <h1> EJEMPLOS  DE SQL SERVER</h1> 
-                    <p>Aquí podrán ver consultas realizadas a una base de datos <a href="https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms" target="blank">"AdventureWorks"</a>  que se dedica a la venta de bicicletas y artículos para ciclismo, la cual brinda Microsoft, donde existen diferentes tablas con información visible para poder extraer datos y mostrar ejemplos complejos como los que verán a continuación.</p>
-                    <p><strong>Importante: </strong>No será necesario descargar la base de datos. Todos los ejemplos se pueden probar haciendo click en el botón "Playground", donde se mostrará la consulta y su resultado en una base de datos disponible online.</p>
-                        
-                        
-                    <p>En los ejemplos utilizaremos las tablas relacionadas a órdenes de compras (<code>SalesOrderHeader</code> y <code>SalesOrderDetail</code>), productos (<code>Product</code>) y clientes (<code>Customer</code>). Estos últimos podrán ser personas físicas o negocios (<code>Person</code> y <code>Store</code>).</p>
-                    <p>El siguiente es un diagrama simplificado de la base de datos AdventureWorks con las tablas que utilizaremos.</p>
-                    <div style="overflow: hidden;"> 
-                        <img src="./imagenes/AdventureWorksDiagram.png" style=" width: 100%;">
-                    </div>
-                </section>
-                <br>
-                <section class="section" id="ejemplo1">
-                    <h2>Recuperación de datos básica</h2>
-                    <p>SELECT es esencial para recuperar y manipular datos almacenados en una base de datos, permitiendo a los desarrolladores y administradores realizar consultas personalizadas para obtener la información que necesitan.</p>
-                </section>
-                <div id="ejemplo1" class="my-4 contenedor-ejemplo">
-                    <h4>SELECT INNER JOIN</h4>
-                    <p>Se utiliza INNER JOIN cuando queremos recuperar datos que tienen relaciones definidas entre dos o más tablas. Se seleccionan solo las filas que tienen valores coincidentes en ambas tablas. </p>
-                    <p>- Obtener las órdenes de venta para una fecha dada, mostrando los datos del cliente</p>
+      <div class="row">
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+          <div class="sidebar-sticky">
+            <div class="sidebar-content">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="#introduccion"> Introducción </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#ejemplo1">
+                    Recuperación de datos básica
+                  </a>
+                </li>
 
-                    <div class="codigo-fuente">
-                        <pre>
+                <li class="nav-item">
+                  <a class="nav-link" href="#ejemplo2"> Filtrado de datos </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#ejemplo3"> Consultas agrupadas </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#ejemplo4"> Tablas temporales </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#ejemplo5">
+                    Procedimientos almacenados
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <section class="encabezado" id="introduccion">
+            <h1>EJEMPLOS DE SQL SERVER</h1>
+            <br />
+            <p>
+              Aquí podrán ver una serie de ejemplos utilizando la base de datos
+              <a
+                href="https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms"
+                target="blank"
+                >"AdventureWorks"</a
+              >
+              creada por Microsoft para demostración de SQL Server. Esta base de
+              datos almacena información de una empresa dedicada a la venta de
+              bicicletas y artículos para ciclismo.
+            </p>
+            <p>
+              <strong>Importante: </strong>No será necesario descargar la base
+              de datos. Todos los ejemplos se pueden probar haciendo click en el
+              botón "Playground", donde se mostrará la consulta y su resultado
+              en una base de datos disponible online.
+            </p>
+
+            <p>
+              En los ejemplos utilizaremos las tablas relacionadas a órdenes de
+              compras (<code>SalesOrderHeader</code> y
+              <code>SalesOrderDetail</code>), productos (<code>Product</code>) y
+              clientes (<code>Customer</code>). Estos últimos podrán ser
+              personas físicas o negocios (<code>Person</code> y
+              <code>Store</code>).
+            </p>
+            <p>
+              El siguiente es un diagrama simplificado de la base de datos
+              AdventureWorks con las tablas que utilizaremos.
+            </p>
+            <div style="overflow: hidden">
+              <img
+                src="./imagenes/AdventureWorksDiagram.png"
+                style="width: 100%"
+              />
+            </div>
+          </section>
+          <br />
+          <section class="section" id="ejemplo1">
+            <h2>Recuperación de datos básica</h2>
+            <p>
+              SELECT es esencial para recuperar y manipular datos almacenados en
+              una base de datos, permitiendo a los desarrolladores y
+              administradores realizar consultas personalizadas para obtener la
+              información que necesitan.
+            </p>
+          </section>
+          <div id="ejemplo1" class="my-4 contenedor-ejemplo">
+            <h4>SELECT INNER JOIN</h4>
+            <p>
+              Se utiliza INNER JOIN cuando queremos recuperar datos que tienen
+              relaciones definidas entre dos o más tablas. Se seleccionan sólo
+              las filas que tienen valores coincidentes en ambas tablas.
+            </p>
+            <p>
+              <strong>Ejemplo:</strong> Obtener las órdenes de venta para una
+              fecha dada, mostrando los datos del cliente.
+            </p>
+
+            <div class="codigo-fuente">
+              <pre>
 
         <span class="sql-statement">SELECT </span> S.SalesOrderID, S.CustomerID, P.FirstName, P.LastName, P.MiddleName,
                 S.OrderDate, S.SalesOrderNumber, S.TotalDue
@@ -82,43 +121,70 @@
             <span class="sql-operator">INNER JOIN</span> Person.Person P ON C.PersonID = P.BusinessEntityID
         <span class="sql-statement">WHERE</span> S.OrderDate = <span class="sql-string">'2011-05-31' </span>
         <span class="sql-statement">ORDER BY</span> S.SalesOrderID
-                        </pre>                     
-                    </div>
-                    
-                    <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/_YbppGDv" target="_blank" style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                    <div id="ejemplo1" class="my-4">
-                        <h4>SELECT TOP</h4>
-                        <p>Se usa para seleccionar las primeras N filas de un conjunto de resultados. Esto puede ser útil cuando solo estás interesado en ver una cantidad limitada de datos.</p>
-                        <p>- Obtener el top 10 en Productos más vendidos en el año 2012</p>
+                        </pre>
+            </div>
+
+            <button type="button" class="btn btn-light">
+              <a
+                href="https://dbfiddle.uk/_YbppGDv"
+                target="_blank"
+                style="text-decoration: none; color: inherit"
+                >Ver en Playground</a
+              >
+            </button>
+            <div id="ejemplo1" class="my-4">
+              <h4>SELECT TOP</h4>
+              <p>
+                Se usa para seleccionar las primeras N filas de un conjunto de
+                resultados. Esto puede ser útil cuando sólo estás interesado en
+                ver una cantidad limitada de datos.
+              </p>
+              <p>
+                <strong>Ejemplo:</strong> Obtener el Top 10 de Productos más
+                vendidos en el año 2012
+              </p>
+
+              <div class="codigo-fuente">
+                <pre>
     
-                        <div class="codigo-fuente">
-                            <pre>
-    
-        <span class="sql-statement">SELECT TOP</span> 10 P.ProductID, P.Name <span class="sql-statement">AS</span> ProductName, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity
-        <span class="sql-statement">INTO</span> #Top10
+        <span class="sql-statement">SELECT TOP</span> 10 P.ProductID, P.Name <span class="sql-statement">AS</span> ProductName, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity        
         <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
             <span class="sql-operator">INNER JOIN</span> Sales.SalesOrderHeader H <span class="sql-statement">ON</span> D.SalesOrderID = H.SalesOrderID
             <span class="sql-operator">INNER JOIN</span> Production.Product P <span class="sql-statement">ON</span> D.ProductID = P.ProductID
         <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-12-31'</span>
         <span class="sql-statement">GROUP BY</span> P.ProductID, P.Name 
         <span class="sql-statement">ORDER BY</span> ProductQuantity <span class="sql-statement">DESC</span>
-        
-        <span class="sql-statement">SELECT</span> * <span class="sql-statement">FROM</span> #Top10 
-        
-        <span class="sql-statement">DROP TABLE</span> #Top10
-    </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/6EVVRJec" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        
-                    </div>
-                    
-                <div id="ejemplo1" class="my-4">
-                    <h4>SELECT LEFT JOIN</h4>
-                    <p>Devuelve todas las filas de la tabla izquierda y las filas coincidentes de la tabla derecha. Si no hay coincidencias en la tabla derecha, devuelve valores NULL en las columnas seleccionadas de la tabla derecha</p>
-                    <p>- Obtener datos de los clientes, en este caso nombre y apellido si es persona y si no lo es, nombre de la empresa. </p>
+                
+    </pre>
+              </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/Kjx4W9Bj"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
+            </div>
 
-                    <div class="codigo-fuente">
-                        <pre>
+            <div id="ejemplo1" class="my-4">
+              <h4>SELECT LEFT JOIN</h4>
+              <p>
+                Devuelve todas las filas de la tabla izquierda y las filas
+                coincidentes de la tabla derecha. Si no hay coincidencias en la
+                tabla derecha, devuelve valores NULL en las columnas
+                seleccionadas de la tabla derecha
+              </p>
+              <p>
+                <strong>Ejemplo:</strong> Obtener datos de los clientes. Los
+                clientes pueden ser personas físicas o negocios. Para los
+                clientes de tipo persona utilizaremos la concatenación de
+                apellido y nombre. Para los clientes de tipo negocio,
+                mostraremos el nombre correspondiente.
+              </p>
+
+              <div class="codigo-fuente">
+                <pre>
 
         <span class="sql-statement">SELECT</span> C.CustomerID, C.PersonID, C.StoreID, 
             <span class="sql-statement">CASE WHEN</span> C.PersonID <span class="sql-operator">IS NOT NULL</span> <span class="sql-statement">THEN</span><span class="sql-string"> 'Person' </span><span class="sql-statement">ELSE</span> <span class="sql-string">'Store'</span> <span class="sql-statement">END AS</span> CustomerType,
@@ -127,17 +193,34 @@
             <span class="sql-operator">LEFT JOIN</span> Person.Person Per <span class="sql-statement">ON</span> C.PersonID = Per.BusinessEntityID
             <span class="sql-operator">LEFT JOIN</span> Sales.Store S <span class="sql-statement">ON</span> C.StoreID = S.BusinessEntityID
         <span class="sql-statement">WHERE</span> C.CustomerID <span class="sql-operator">BETWEEN</span> 697 <span class="sql-operator">AND</span> 11010 
-                        </pre>                     
-                    </div>                    
-                    <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/N0HFs02P" target="_blank" style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                    
-                </div>
-                <div id="ejemplo1" class="my-4">
-                    <h4>SELECT UNION</h4>
-                    <p>Se utiliza para combinar los resultados de dos o más consultas en una sola lista de resultados. La función principal de UNION es eliminar duplicados y fusionar las filas de resultados de múltiples consultas en una única lista de resultados.</p>
-                    <p>- Obtener los datos de una serie de clientes, si es persona nombre y apellido, si no lo es, nombre de la empresa. Ejemplo muy parecido al anterior pero las consultas se hacen por separado</p>
-                    <div class="codigo-fuente">
-                        <pre>
+                        </pre>
+              </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/N0HFs02P"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
+            </div>
+            <div id="ejemplo1" class="my-4">
+              <h4>SELECT UNION</h4>
+              <p>
+                Se utiliza para combinar los resultados de dos o más consultas
+                en una sola lista de resultados. La función principal de UNION
+                es eliminar duplicados y fusionar las filas de resultados de
+                múltiples consultas en una única lista de resultados.
+              </p>
+              <p>
+                <strong>Ejemplo: </strong> Obtener los datos de una serie de
+                clientes, si es persona nombre y apellido, si no lo es, nombre
+                de la empresa. Ejemplo muy parecido al anterior pero las
+                consultas se hacen por separado
+              </p>
+              <div class="codigo-fuente">
+                <pre>
+
         <span class="sql-statement">SELECT</span> C.CustomerID, C.PersonID, C.StoreID, 	
             Per.LastName +  ', ' + Per.FirstName <span class="sql-statement">AS</span> CustomerName,
             <span class="sql-string">'Person'</span> <span class="sql-statement">AS</span> CustomerType
@@ -151,74 +234,138 @@
         <span class="sql-statement">FROM</span> Sales.Customer C            
             <span class="sql-statement">INNER JOIN</span> Sales.Store S <span class="sql-statement">ON</span> C.StoreID = S.BusinessEntityID
         <span class="sql-statement">WHERE</span> C.CustomerID <span class="sql-operator">BETWEEN</span> 697 <span class="sql-operator">AND</span> 11010 
-                        </pre>                     
-                    </div>                    
-                    <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                    
-                </div>
+                        </pre>
+              </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href=""
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
+            </div>
+          </div>
+          <div id="ejemplo2" class="my-4 contenedor-ejemplo">
+            <section class="section" id="ejemplo2">
+              <h2>Filtrado (WHERE)</h2>
+              <p>
+                La cláusula WHERE es esencial para limitar los resultados de una
+                consulta a las filas que cumplen con ciertos criterios,
+                permitiéndote extraer información específica de tu base de
+                datos.
+              </p>
+            </section>
 
-                </div>
-                <div id="ejemplo2" class="my-4 contenedor-ejemplo">
-                <section class="section" id="ejemplo2">
-                    <h2>Filtrado (WHERE)</h2>
-                    <p>La cláusula WHERE es esencial para limitar los resultados de una consulta a las filas que cumplen con ciertos criterios, permitiéndote extraer información específica de tu base de datos.</p>
-                </section>
-                
-                    <div id="ejemplo2" class="my-4">
-                        <h4>WHERE filtrando por YEAR</h4>
-                        <p>La función YEAR() se utiliza para extraer el año de una fecha específica. Se Puede utilizar esta función con WHERE para filtrar las filas de una tabla basadas en el año de una columna de tipo fecha. </p>
-                        <p>- Obtener el top 10 de las ordenes de compra en el año 2013 ordenados de mayor a menor de acuerdo al monto total.</p>
-                        <p></p>
-                        <div class="codigo-fuente">
-                            <pre>
+            <div id="ejemplo2" class="my-4">
+              <h4>WHERE filtrando por YEAR</h4>
+              <p>
+                La función YEAR() se utiliza para extraer el año de una fecha
+                específica. Se puede utilizar esta función con WHERE para
+                filtrar las filas de una tabla basadas en el año de una columna
+                de tipo fecha.
+              </p>
+              <p>
+                <strong>Ejemplo:</strong> Obtener el top 10 de las ordenes de
+                compra en el año 2013 con mayores ventas.
+              </p>
+              <p></p>
+              <div class="codigo-fuente">
+                <pre>
 
         <span class="sql-statement">SELECT TOP</span> 10 *  
         <span class="sql-statement">FROM</span>  Sales.SalesOrderHeader O
         <span class="sql-statement">WHERE</span> 
-        <span class="sql-function">YEAR</span>(OrderDate) = 2013
+            <span class="sql-function">YEAR</span>(OrderDate) = 2013
         <span class="sql-statement">ORDER BY</span> TotalDue <span class="sql-statement">DESC</span>
-                            </pre>                     
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/OMzOkwij" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        
-                    </div>
-                </div>
-                <div id="ejemplo3" class="my-4 contenedor-ejemplo">
-                    <section class="section" id="ejemplo3">
-                        <h2>CONSULTAS AGRUPADAS</h2>
-                        <p></p>
-                    </section>
-                    
-                    
-                       
-                        <div id="ejemplo3" class="my-4">
-                            <h4>GROUP BY: COUNT(*)</h4>
-                            <p>La cláusula GROUP BY se utiliza para agrupar filas que tienen los mismos valores en una o más columnas en conjuntos separados. Luego, la función COUNT(*) se utiliza para contar el número de filas en cada grupo resultante.</p>
-                            <p>- Obtener cantidad de ordenes de compra por mes en un mismo año </p>
-        
-                            <div class="codigo-fuente">
-                                <pre>
+                            </pre>
+              </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/OMzOkwij"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
+            </div>
+          </div>
+          <div id="ejemplo3" class="my-4 contenedor-ejemplo">
+            <section class="section" id="ejemplo3">
+              <h2>CONSULTAS AGRUPADAS</h2>
+              <p></p>
+            </section>
+
+            <div id="ejemplo3" class="my-4">
+              <h4>GROUP BY: COUNT(*)</h4>
+              <p>
+                La cláusula GROUP BY se utiliza para agrupar filas que tienen
+                los mismos valores en una o más columnas en conjuntos separados.
+                Luego, la función COUNT(*) se utiliza para contar el número de
+                filas en cada grupo resultante.
+              </p>
+              <p>
+                <strong>Ejemplo:</strong> Obtener cantidad de ordenes de compra
+                por mes para un año dado.
+              </p>
+
+              <div class="codigo-fuente">
+                <pre>
 
         <span class="sql-statement">SELECT</span> <span class="sql-function">YEAR</span>(S.OrderDate) <span class="sql-statement">AS</span> [Year], <span class="sql-function">MONTH</span>(S.OrderDate) <span class="sql-statement">AS</span> [Month], <span class="sql-function">COUNT</span><span class="sql-operator">(*)</span> <span class="sql-statement">AS</span> SalesOrdersCount
         <span class="sql-statement">FROM</span> Sales.SalesOrderHeader S
         <span class="sql-statement">WHERE</span> S.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-12-31'</span>
         <span class="sql-statement">GROUP BY</span> <span class="sql-function">YEAR</span>(S.OrderDate), <span class="sql-function">MONTH</span>(S.OrderDate) 
         <span class="sql-statement">ORDER BY</span> [Year], [Month]
-                                </pre>                     
-                            </div> 
-                        </div>                    
-                        <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/Oki_Ly9N" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        <div id="ejemplo3" class="my-4">
-                            <h4>Funciones MIN, MAX, SUM, COUNT, AVG</h4>
-                            <p>Son funciones de agregación que se utilizan comúnmente para realizar cálculos sobre conjuntos de datos en consultas SQL. </p>
-                            <p>- Obtener cantidad de ordenes de compra por mes en un mismo año, con las compras de mayor y menor importe, y el importe promedio.</p>
-        
-                            <div class="codigo-fuente">
-                                <pre>
+                                </pre>
+              </div>
+            </div>
+            <button type="button" class="btn btn-light">
+              <a
+                href="https://dbfiddle.uk/Oki_Ly9N"
+                target="_blank"
+                style="text-decoration: none; color: inherit"
+                >Ver en Playground</a
+              >
+            </button>
+            <div id="ejemplo3" class="my-4">
+              <h4>Funciones MIN, MAX, SUM, COUNT, AVG</h4>
+              <p>
+                Son funciones de agregación que se utilizan comúnmente para
+                realizar cálculos sobre conjuntos de datos en consultas SQL.
+              </p>
+              <p>
+                <strong>MIN:</strong> Obtiene el valor mínimo de la columna para
+                todo el conjunto de datos.
+              </p>
+              <p>
+                <strong>MAX:</strong> Obtiene el valor máximo de la columna para
+                todo el conjunto de datos.
+              </p>
+              <p>
+                <strong>SUM:</strong> Obtiene la sumatoria de todos los valores
+                de la columna para todo el conjunto de datos.
+              </p>
+              <p>
+                <strong>COUNT:</strong> Contabiliza la cantidad de filas que
+                fueron agrupadas.
+              </p>
+              <p>
+                <strong>AVG:</strong> Obtiene el promedio de todos los valores
+                de la columna para todo el conjunto de datos.
+              </p>
+              <p>
+                <strong>Ejemplo:</strong> Obtener cantidad de ordenes de compra
+                por mes en un mismo año, con las compras de mayor y menor
+                importe, y el importe promedio.
+              </p>
+
+              <div class="codigo-fuente">
+                <pre>
 
         <span class="sql-statement">SELECT</span> <span class="sql-funtion">YEAR</span>(S.OrderDate) <span class="sql-statement">AS</span> [Year], <span class="sql-funtion">MONTH</span>(S.OrderDate) <span class="sql-statement">AS</span> [Month], 
             <span class="sql-function">COUNT</span><span class="sql-operator">(*)</span> <span class="sql-statement">AS</span> SalesOrdersCount, 
-            <span class="sql-function">SUM</span>(S.TotalDue) <span class="sql-statement">AS</span>TotalDue,
+            <span class="sql-function">SUM</span>(S.TotalDue) <span class="sql-statement">AS</span> TotalDue,
             <span class="sql-function">AVG</span>(S.TotalDue) <span class="sql-statement">AS</span> AvgTotalDue,
             <span class="sql-function">MIN</span>(S.TotalDue) <span class="sql-statement">AS</span> MinTotalDue,
             <span class="sql-function">MAX</span>(S.TotalDue) <span class="sql-statement">AS</span> MaxTotalDue
@@ -226,23 +373,28 @@
         <span class="sql-statement">WHERE</span> S.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-12-31'</span>
         <span class="sql-statement">GROUP BY</span> <span class="sql-function">YEAR</span>(S.OrderDate), <span class="sql-function">MONTH</span>(S.OrderDate) 
         <span class="sql-statement">ORDER BY</span> [Year], [Month]                                    
-                                </pre>                     
-                            </div>                    
-                            <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/OYf1yeZ9" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                            
-                        </div>
-                        
-                    </div>
-                    <div id="ejemplo4" class="my-4 contenedor-ejemplo">
-                        <section class="section" id="ejemplo4">
-                            <h2>TABLAS TEMPORALES</h2>
-                        </section>
-                    
-                       <div id="ejemplo4" class="my-4">
-                            <h4>INTO # </h4>
-                            <p></p>
-                            <div class="codigo-fuente">
-                                <pre>
+                                </pre>
+              </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/OYf1yeZ9"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
+            </div>
+          </div>
+          <div id="ejemplo4" class="my-4 contenedor-ejemplo">
+            <section class="section" id="ejemplo4">
+              <h2>TABLAS TEMPORALES</h2>
+            </section>
+
+            <div id="ejemplo4" class="my-4">
+              <h4>INTO #</h4>
+              <p></p>
+              <div class="codigo-fuente">
+                <pre>
 
         <span class="sql-statement">SELECT TOP</span> 10 P.ProductID, p.Name <span class="sql-statement">AS</span> ProductName, SUM(D.OrderQty) as ProductQuantity
         <span class="sql-statement">INTO</span> #Top10  
@@ -264,41 +416,46 @@
 
         <span class="sql-statement">DROP TABLE</span> #Top10
             
-                                </pre>                     
-                            </div>                    
-                            <button type="button" class="btn btn-light"><a href="https://dbfiddle.uk/92jqZ281" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                         </div>
-           
-                    </div>
-         
-                    <div id="ejemplo5" class="my-4 contenedor-ejemplo">
-                        <section class="section" id="ejemplo5">
-                            <h2>PROCEDIMIENTOS ALMACENADOS</h2>
-                            <p>
-
-                            </p>
-                        </section>
-                    
-                        <div id="ejemplo5" class="my-4">
-                            <h4>Sección 4</h4>
-                            <p>Contenido de la sección 2...</p>
-                            <div class="codigo-fuente">
-                                <pre>
-
-                                </pre>                     
-                            </div>                    
-                            <button type="button" class="btn btn-light"><a href="" target="_blank"style="text-decoration: none; color: inherit;">Ver en Playground</a></button>
-                        </div>
-                    </div>
-                </main>
+                                </pre>
+              </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/92jqZ281"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
             </div>
+          </div>
 
-        </div>
+          <div id="ejemplo5" class="my-4 contenedor-ejemplo">
+            <section class="section" id="ejemplo5">
+              <h2>PROCEDIMIENTOS ALMACENADOS</h2>
+              <p></p>
+            </section>
+
+            <div id="ejemplo5" class="my-4">
+              <h4>Sección 4</h4>
+              <p>Contenido de la sección 2...</p>
+              <div class="codigo-fuente">
+                <pre></pre>
+              </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href=""
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-
+  </body>
 </html>
-
-
