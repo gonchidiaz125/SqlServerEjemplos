@@ -40,9 +40,10 @@
                   <a class="nav-link" href="#ejemplo4"> Tablas temporales </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#ejemplo5">
-                    Procedimientos almacenados
-                  </a>
+                  <a class="nav-link" href="#ejemplo5"> Procedimientos almacenados </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#ejemplo6"> Creación y modificación de tablas </a>
                 </li>
               </ul>
             </div>
@@ -90,6 +91,7 @@
             </div>
           </section>
           <br />
+          <div id="ejemplo1" class="my-4 contenedor-ejemplo">
           <section class="section" id="ejemplo1">
             <h2>Recuperación de datos básica</h2>
             <p>
@@ -99,7 +101,7 @@
               información que necesitan.
             </p>
           </section>
-          <div id="ejemplo1" class="my-4 contenedor-ejemplo">
+          <br>
             <h4>SELECT INNER JOIN</h4>
             <p>
               Se utiliza INNER JOIN cuando queremos recuperar datos que tienen
@@ -238,7 +240,7 @@
               </div>
               <button type="button" class="btn btn-light">
                 <a
-                  href=""
+                  href="https://dbfiddle.uk/kd6nxevN"
                   target="_blank"
                   style="text-decoration: none; color: inherit"
                   >Ver en Playground</a
@@ -269,7 +271,6 @@
                 <strong>Ejemplo:</strong> Obtener el top 10 de las ordenes de
                 compra en el año 2013 con mayores ventas.
               </p>
-              <p></p>
               <div class="codigo-fuente">
                 <pre>
 
@@ -289,11 +290,93 @@
                 >
               </button>
             </div>
+            <div id="ejemplo2" class="my-4">
+                  <h4>WHERE filtrando por MONTH</h4>
+                  <p>Se utiliza para extraer el componente del mes de una fecha dada. 
+                    Esta función toma una fecha como entrada y devuelve el número de 
+                    mes correspondiente (un valor entero entre 1 y 12).
+                  </p>
+                  <p><strong>Ejemplo:</strong> Obtener el top 5 de las ordenes de
+                    compra en el año 2013 del mes 8 con mayores ventas.</p>
+                  <div class="codigo-fuente">
+                    <pre>
+
+        <span class="sql-statement">SELECT TOP</span> 5 *  
+        <span class="sql-statement">FROM</span>  Sales.SalesOrderHeader O
+        <span class="sql-statement">WHERE</span> 
+           <span class="sql-function">YEAR</span>(OrderDate) = 2013
+           <span class="sql-operator">AND</span> <span class="sql-function">MONTH</span>(OrderDate) = 8
+        <span class="sql-statement">ORDER BY </span>TotalDue <span class="sql-statement">DESC</span>
+                    </pre>
+                  </div>
+                  <button type="button" class="btn btn-light">
+                    <a
+                      href="https://dbfiddle.uk/P3af19E4"
+                      target="_blank"
+                      style="text-decoration: none; color: inherit"
+                      >Ver en Playground</a
+                    >
+                  </button>
+            </div>
+            <div id="ejemplo2" class="my-4">
+                <h4>WHERE filtrando por BETWEEN</h4>
+                <p>WHERE, cuando se combina con BETWEEN, se puede filtrar filas en función de un rango de valores.</p>
+                <p> <strong>Ejemplo:</strong> 
+                    Obtener todas las ordenes de compra del mes de enero del año 2012
+                </p>
+                <div class="codigo-fuente">
+                  <pre>
+
+        <span class="sql-statement">SELECT</span> *
+        <span class="sql-statement">FROM</span> Sales.SalesOrderHeader S
+        <span class="sql-statement">WHERE</span> S.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-01-31'</span>
+                  </pre>
+                </div>
+                <button type="button" class="btn btn-light">
+                  <a
+                    href="https://dbfiddle.uk/01EkAbFg"
+                    target="_blank"
+                    style="text-decoration: none; color: inherit"
+                    >Ver en Playground</a
+                  >
+                </button>
+              </div>
+              <div id="ejemplo2" class="my-4">
+                <h4>WHERE filtrando por LIKE</h4>
+                <p> La cláusula LIKE se utiliza para buscar patrones de texto en una columna. 
+                    Puedes usar % como comodín para representar cero o más caracteres, 
+                    o _ para representar un solo carácter.
+                </p>
+                <p> <strong>Ejemplo:</strong> 
+                    Obtener todos las personas cuyos nombres y apellidos comienzen con un patrón.
+                </p>
+                <div class="codigo-fuente">
+                  <pre>
+
+        <span class="sql-statement">SELECT</span> *
+        <span class="sql-statement">FROM</span> Person.Person
+        <span class="sql-statement">WHERE</span> FirstName <span class="sql-operator">LIKE</span> <span class="sql-string">'Alex%'</span>
+        <span class="sql-statement">AND</span> LastName <span class="sql-operator">LIKE</span> <span class="sql-string">'Mart%'</span>
+                  </pre>
+                </div>
+                <button type="button" class="btn btn-light">
+                  <a
+                    href="https://dbfiddle.uk/rHqPrZpG"
+                    target="_blank"
+                    style="text-decoration: none; color: inherit"
+                    >Ver en Playground</a
+                  >
+                </button>
+              </div>
           </div>
+          
           <div id="ejemplo3" class="my-4 contenedor-ejemplo">
+            
             <section class="section" id="ejemplo3">
-              <h2>CONSULTAS AGRUPADAS</h2>
-              <p></p>
+            <h2>Consultas agrupadas</h2>
+            <p>Las consultas agrupadas son fundamentales para realizar análisis de datos y obtener estadísticas resumidas sobre conjuntos de datos en SQL Server. 
+                Se utilizan comúnmente en informes, paneles de control y otras aplicaciones de análisis de datos para resumir y visualizar información de manera significativa.
+            </p>
             </section>
 
             <div id="ejemplo3" class="my-4">
@@ -319,15 +402,16 @@
         <span class="sql-statement">ORDER BY</span> [Year], [Month]
                                 </pre>
               </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/Oki_Ly9N"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
             </div>
-            <button type="button" class="btn btn-light">
-              <a
-                href="https://dbfiddle.uk/Oki_Ly9N"
-                target="_blank"
-                style="text-decoration: none; color: inherit"
-                >Ver en Playground</a
-              >
-            </button>
+            
             <div id="ejemplo3" class="my-4">
               <h4>Funciones MIN, MAX, SUM, COUNT, AVG</h4>
               <p>
@@ -387,12 +471,20 @@
           </div>
           <div id="ejemplo4" class="my-4 contenedor-ejemplo">
             <section class="section" id="ejemplo4">
-              <h2>TABLAS TEMPORALES</h2>
+              <h2>Tablas temporales</h2>
+              <p>Son tablas que existen temporalmente durante la ejecución de una sesión o un bloque de código en la base de datos.
+                Estas tablas proporcionan un espacio de trabajo temporal donde se pueden almacenar datos temporales o intermedios para su posterior procesamiento, análisis o manipulación.</p>
             </section>
 
             <div id="ejemplo4" class="my-4">
               <h4>INTO #</h4>
-              <p></p>
+              <p>La cláusula INTO # se utiliza en SQL Server para crear una tabla temporal dentro de una consulta SELECT y copiar los resultados de esa consulta en la tabla temporal recién creada. 
+                Esta cláusula es útil cuando deseas almacenar los resultados de una consulta en una tabla temporal para su posterior uso dentro de la misma sesión de la base de datos.
+            </p>
+            <p>
+                <strong>Ejemplo:</strong>
+                Obtener ventas mensuales para los Productos Top 10. Cada mes se muestra en una fila diferente.
+            </p>
               <div class="codigo-fuente">
                 <pre>
 
@@ -431,8 +523,11 @@
 
           <div id="ejemplo5" class="my-4 contenedor-ejemplo">
             <section class="section" id="ejemplo5">
-              <h2>PROCEDIMIENTOS ALMACENADOS</h2>
-              <p></p>
+              <h2>Procedimientos almacenados</h2>
+              <p>Son conjuntos de instrucciones SQL que se almacenan en la base de datos del servidor. 
+                Estas instrucciones se agrupan lógicamente en un solo objeto y se pueden ejecutar repetidamente cuando sea necesario. 
+                Los procedimientos almacenados son útiles para realizar tareas repetitivas, procesos complejos, y operaciones que requieren múltiples pasos dentro de la base de datos.
+              </p>
             </section>
 
             <div id="ejemplo5" class="my-4">
@@ -450,6 +545,123 @@
                 >
               </button>
             </div>
+          </div>
+          <div id="ejemplo6" class="my-4 contenedor-ejemplo">
+            <section class="section" id="ejemplo6">
+              <h2>Creación y modificación de tablas</h2>
+              <p>La creación y modificación de tablas sirve para diseñar y definir la estructura de las bases de datos, 
+                 lo que permite almacenar, organizar y gestionar datos de manera eficiente.
+              </p>
+            </section>
+
+            <div id="ejemplo6" class="my-4">
+              <h4>CREATE TABLE</h4>
+              <p>Se utiliza para crear una nueva tabla en una base de datos. 
+                Esta instrucción es fundamental en el diseño y la estructuración de bases de datos relacionales, 
+                ya que define la estructura y el esquema de la tabla, incluidas las columnas y las restricciones.</p>
+                <p>
+                    <strong>Ejemplo:</strong>
+                    Obtener la creacion de una tabla "Personas" siempre y cuando no exista.
+                </p>
+              <div class="codigo-fuente">
+                <pre>
+
+        <span class="sql-statement">IF</span> <span class="sql-operator">NOT EXISTS</span> (<span class="sql-statement">SELECT TOP</span> 1 1 <span class="sql-statement">FROM</span> <span class="sql-information">INFORMATION_SCHEMA.TABLES</span> <span class="sql-statement">WHERE</span> TABLE_NAME = <span class="sql-string">'Personas'</span> <span class="sql-operator">AND</span> TABLE_SCHEMA = <span class="sql-string">'dbo'</span>) 
+        <span class="sql-statement">BEGIN</span>   
+        <span class="sql-statement">CREATE TABLE</span> [dbo].[Personas](
+                [Id] [int] <span class="sql-statement">IDENTITY</span>(1,1) <span class="sql-operator">NOT NULL,</span>
+                [Nombre] [varchar](50) <span class="sql-operator">NOT NULL,</span>
+                [Apellido] [varchar](50) <span class="sql-operator">NOT NULL,</span>
+                [Documento] [int] <span class="sql-operator">NOT NULL,</span>
+                [FechaNacimieto] [datetime] <span class="sql-operator">NULL,</span>
+                [Sexo] [varchar](1) <span class="sql-operator">NOT NULL,</span>
+                [Estado] [bit] <span class="sql-operator">NOT NULL,</span>
+                [FechaAlta] [datetime] <span class="sql-operator">NOT NULL,</span>
+                [IdUsuarioAlta] [int] <span class="sql-operator">NOT NULL,</span>
+                [FechaModificacion] [datetime] <span class="sql-operator">NULL,</span>
+                [IdUsuarioModificacion] [int] <span class="sql-operator">NULL,</span>
+                [FechaBaja] [datetime] <span class="sql-operator">NULL,</span>
+                [IdUsuarioBaja] [int] <span class="sql-operator">NULL,</span>
+                <span class="sql-statement">CONSTRAINT</span> [PK_Personas] <span class="sql-statement">PRIMARY KEY CLUSTERED</span> ([Id] <span class="sql-statement">ASC</span>))
+        
+        <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_Estado]  <span class="sql-statement">DEFAULT</span> ((1)) <span class="sql-statement">FOR</span> [Estado]
+        
+        <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_FechaAlta]  <span class="sql-statement">DEFAULT</span> (<span class="sql-function">getdate</span>()) <span class="sql-statement">FOR</span> [FechaAlta]
+    
+        <span class="sql-statement">PRINT</span> <span class="sql-string">'La tabla Personas fue creada con éxito'</span>
+        <span class="sql-statement">END</span>
+        <span class="sql-statement">ELSE</span> 
+        <span class="sql-statement">BEGIN</span>
+        <span class="sql-statement">PRINT</span> <span class="sql-string">'La tabla Personas ya existe'</span>
+        <span class="sql-statement">END </span>
+
+                </pre>
+              </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/mMLAc5qI"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
+            </div>
+            <div id="ejemplo6" class="my-4">
+                <h4>Sección 4</h4>
+                <p>Contenido de la sección 2...</p>
+                <div class="codigo-fuente">
+                  <pre>
+
+        <span class="sql-statement">IF</span> <span class="sql-operator">NOT EXISTS</span> (<span class="sql-statement">SELECT TOP</span> 1 1 <span class="sql-statement">FROM</span> <span class="sql-information">INFORMATION_SCHEMA.TABLES</span> <span class="sql-statement">WHERE</span> TABLE_NAME = <span class="sql-string">'Personas'</span> <span class="sql-operator">AND</span> TABLE_SCHEMA = <span class="sql-string">'dbo'</span>) 
+        <span class="sql-statement">BEGIN</span>   
+        <span class="sql-statement">CREATE TABLE</span> [dbo].[Personas](
+            [Id] [int] <span class="sql-statement">IDENTITY</span>(1,1) <span class="sql-operator">NOT NULL,</span>
+            [Nombre] [varchar](50) <span class="sql-operator">NOT NULL,</span>
+            [Apellido] [varchar](50) <span class="sql-operator">NOT NULL,</span>
+            [Documento] [int] <span class="sql-operator">NOT NULL,</span>
+            [FechaNacimieto] [datetime] <span class="sql-operator">NULL,</span>
+            [Sexo] [varchar](1) <span class="sql-operator">NOT NULL,</span>
+            [Estado] [bit] <span class="sql-operator">NOT NULL,</span>
+            [FechaAlta] [datetime] <span class="sql-operator">NOT NULL,</span>
+            [IdUsuarioAlta] [int] <span class="sql-operator">NOT NULL,</span>
+            [FechaModificacion] [datetime] <span class="sql-operator">NULL,</span>
+            [IdUsuarioModificacion] [int] <span class="sql-operator">NULL,</span>
+            [FechaBaja] [datetime] <span class="sql-operator">NULL,</span>
+            [IdUsuarioBaja] [int] <span class="sql-operator">NULL,</span>
+        <span class="sql-statement">CONSTRAINT</span> [PK_Personas] <span class="sql-statement">PRIMARY KEY CLUSTERED</span> ([Id] <span class="sql-statement">ASC</span>))
+
+        <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_Estado]  <span class="sql-statement">DEFAULT</span> ((1)) <span class="sql-statement">FOR</span> [Estado]
+
+        <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_FechaAlta]  <span class="sql-statement">DEFAULT</span> (<span class="sql-function">getdate</span>()) <span class="sql-statement">FOR</span> [FechaAlta]
+
+        <span class="sql-statement">END</span>
+        <span class="sql-statement">ELSE</span> 
+        <span class="sql-statement">BEGIN</span>
+        <span class="sql-statement">PRINT</span> <span class="sql-string">'La tabla Personas ya existe'</span>
+        <span class="sql-statement">END </span>
+        <span class="sql-statement">IF</span> <span class="sql-operator">NOT EXISTS</span>(<span class="sql-statement">SELECT</span> 1 <span class="sql-statement">FROM</span> <span class="sql-information">INFORMATION_SCHEMA.COLUMNS</span> <span class="sql-statement">WHERE</span> TABLE_NAME = <span class="sql-string">'IdLocalidad'</span> <span class="sql-operator">AND</span> TABLE_SCHEMA = <span class="sql-string">'dbo'</span> <span class="sql-operator">AND</span> COLUMN_NAME = <span class="sql-string">'Personas'</span>)
+        <span class="sql-statement"></span>BEGIN	
+        <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD</span> [IdLocalidad] [int] <span class="sql-operator">NULL</span>     
+        <span class="sql-statement">PRINT</span> <span class="sql-string">'OK: La Columna IdLocalidad fue agregada a la tabla Personas con éxito'</span>
+        <span class="sql-statement">END</span>
+        <span class="sql-statement">ELSE</span>
+        <span class="sql-statement">BEGIN</span>
+        <span class="sql-statement">PRINT</span> <span class="sql-string">'ERROR: La tabla Personas ya tiene un columna con nombre IdLocalidad'</span>
+        <span class="sql-statement">END</span> 
+
+        <span class="sql-information">-- Solo para mostrar que la columna existe en la Tabla</span>
+        <span class="sql-statement">SELECT</span> * <span class="sql-statement">FROM</span> dbo.Personas
+                  </pre>
+                </div>
+                <button type="button" class="btn btn-light">
+                  <a
+                    href="https://dbfiddle.uk/2jtGIc2A"
+                    target="_blank"
+                    style="text-decoration: none; color: inherit"
+                    >Ver en Playground</a
+                  >
+                </button>
+              </div>
           </div>
         </main>
       </div>

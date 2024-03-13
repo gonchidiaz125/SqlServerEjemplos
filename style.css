@@ -31,7 +31,6 @@ body {
 
 .section {
     background-color: rgb(220, 235, 245);
-    padding: 15px;
     border-radius: 7px;
 }
 
@@ -61,6 +60,10 @@ pre {
 
 .sql-string {
     color: red;  
+}
+
+.sql-information {
+    color: rgb(75, 170, 62);
 }
 
 .contenedor-ejemplo {
