@@ -40,10 +40,14 @@
                   <a class="nav-link" href="#ejemplo4"> Tablas temporales </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#ejemplo5"> Procedimientos almacenados </a>
+                  <a class="nav-link" href="#ejemplo5">
+                    Procedimientos almacenados
+                  </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#ejemplo6"> Creación y modificación de tablas </a>
+                  <a class="nav-link" href="#ejemplo6">
+                    Creación y modificación de tablas
+                  </a>
                 </li>
               </ul>
             </div>
@@ -92,16 +96,16 @@
           </section>
           <br />
           <div id="ejemplo1" class="my-4 contenedor-ejemplo">
-          <section class="section" id="ejemplo1">
-            <h2>Recuperación de datos básica</h2>
-            <p>
-              SELECT es esencial para recuperar y manipular datos almacenados en
-              una base de datos, permitiendo a los desarrolladores y
-              administradores realizar consultas personalizadas para obtener la
-              información que necesitan.
-            </p>
-          </section>
-          <br>
+            <section class="section" id="ejemplo1">
+              <h2>Recuperación de datos básica</h2>
+              <p>
+                SELECT es esencial para recuperar y manipular datos almacenados
+                en una base de datos, permitiendo a los desarrolladores y
+                administradores realizar consultas personalizadas para obtener
+                la información que necesitan.
+              </p>
+            </section>
+            <br />
             <h4>SELECT INNER JOIN</h4>
             <p>
               Se utiliza INNER JOIN cuando queremos recuperar datos que tienen
@@ -291,15 +295,18 @@
               </button>
             </div>
             <div id="ejemplo2" class="my-4">
-                  <h4>WHERE filtrando por MONTH</h4>
-                  <p>Se utiliza para extraer el componente del mes de una fecha dada. 
-                    Esta función toma una fecha como entrada y devuelve el número de 
-                    mes correspondiente (un valor entero entre 1 y 12).
-                  </p>
-                  <p><strong>Ejemplo:</strong> Obtener el top 5 de las ordenes de
-                    compra en el año 2013 del mes 8 con mayores ventas.</p>
-                  <div class="codigo-fuente">
-                    <pre>
+              <h4>WHERE filtrando por MONTH</h4>
+              <p>
+                Se utiliza para extraer el componente del mes de una fecha dada.
+                Esta función toma una fecha como entrada y devuelve el número de
+                mes correspondiente (un valor entero entre 1 y 12).
+              </p>
+              <p>
+                <strong>Ejemplo:</strong> Obtener el top 5 de las ordenes de
+                compra en el año 2013 del mes 8 con mayores ventas.
+              </p>
+              <div class="codigo-fuente">
+                <pre>
 
         <span class="sql-statement">SELECT TOP</span> 5 *  
         <span class="sql-statement">FROM</span>  Sales.SalesOrderHeader O
@@ -308,74 +315,86 @@
            <span class="sql-operator">AND</span> <span class="sql-function">MONTH</span>(OrderDate) = 8
         <span class="sql-statement">ORDER BY </span>TotalDue <span class="sql-statement">DESC</span>
                     </pre>
-                  </div>
-                  <button type="button" class="btn btn-light">
-                    <a
-                      href="https://dbfiddle.uk/P3af19E4"
-                      target="_blank"
-                      style="text-decoration: none; color: inherit"
-                      >Ver en Playground</a
-                    >
-                  </button>
+              </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/P3af19E4"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
             </div>
             <div id="ejemplo2" class="my-4">
-                <h4>WHERE filtrando por BETWEEN</h4>
-                <p>WHERE, cuando se combina con BETWEEN, se puede filtrar filas en función de un rango de valores.</p>
-                <p> <strong>Ejemplo:</strong> 
-                    Obtener todas las ordenes de compra del mes de enero del año 2012
-                </p>
-                <div class="codigo-fuente">
-                  <pre>
+              <h4>WHERE filtrando por BETWEEN</h4>
+              <p>
+                WHERE, cuando se combina con BETWEEN, se puede filtrar filas en
+                función de un rango de valores.
+              </p>
+              <p>
+                <strong>Ejemplo:</strong>
+                Obtener todas las ordenes de compra del mes de enero del año
+                2012
+              </p>
+              <div class="codigo-fuente">
+                <pre>
 
         <span class="sql-statement">SELECT</span> *
         <span class="sql-statement">FROM</span> Sales.SalesOrderHeader S
         <span class="sql-statement">WHERE</span> S.OrderDate <span class="sql-operator">BETWEEN</span> <span class="sql-string">'2012-01-01'</span> <span class="sql-operator">AND</span> <span class="sql-string">'2012-01-31'</span>
                   </pre>
-                </div>
-                <button type="button" class="btn btn-light">
-                  <a
-                    href="https://dbfiddle.uk/01EkAbFg"
-                    target="_blank"
-                    style="text-decoration: none; color: inherit"
-                    >Ver en Playground</a
-                  >
-                </button>
               </div>
-              <div id="ejemplo2" class="my-4">
-                <h4>WHERE filtrando por LIKE</h4>
-                <p> La cláusula LIKE se utiliza para buscar patrones de texto en una columna. 
-                    Puedes usar " % "  como comodín para representar cero o más caracteres. 
-                </p>
-                <p> <strong>Ejemplo:</strong> 
-                    Obtener todos las personas cuyos nombres y apellidos comiencen con un patrón.
-                </p>
-                <div class="codigo-fuente">
-                  <pre>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/01EkAbFg"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
+            </div>
+            <div id="ejemplo2" class="my-4">
+              <h4>WHERE filtrando por LIKE</h4>
+              <p>
+                La cláusula LIKE se utiliza para buscar patrones de texto en una
+                columna. Puedes usar " % " como comodín para representar cero o
+                más caracteres.
+              </p>
+              <p>
+                <strong>Ejemplo:</strong>
+                Obtener todos las personas cuyos nombres y apellidos comiencen
+                con un patrón.
+              </p>
+              <div class="codigo-fuente">
+                <pre>
 
         <span class="sql-statement">SELECT</span> *
         <span class="sql-statement">FROM</span> Person.Person
         <span class="sql-statement">WHERE</span> FirstName <span class="sql-operator">LIKE</span> <span class="sql-string">'Alex%'</span>
         <span class="sql-statement">AND</span> LastName <span class="sql-operator">LIKE</span> <span class="sql-string">'Mart%'</span>
                   </pre>
-                </div>
-                <button type="button" class="btn btn-light">
-                  <a
-                    href="https://dbfiddle.uk/rHqPrZpG"
-                    target="_blank"
-                    style="text-decoration: none; color: inherit"
-                    >Ver en Playground</a
-                  >
-                </button>
               </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/rHqPrZpG"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
+            </div>
           </div>
-          
+
           <div id="ejemplo3" class="my-4 contenedor-ejemplo">
-            
             <section class="section" id="ejemplo3">
-            <h2>Consultas agrupadas</h2>
-            <p>Las consultas agrupadas son fundamentales para realizar análisis de datos y obtener estadísticas resumidas sobre conjuntos de datos en SQL Server. 
-                Se utilizan comúnmente en informes, paneles de control y otras aplicaciones de análisis de datos para resumir y visualizar información de manera significativa.
-            </p>
+              <h2>Consultas agrupadas</h2>
+              <p>
+                Las consultas agrupadas son fundamentales para realizar análisis
+                de datos y obtener estadísticas resumidas sobre conjuntos de
+                datos en SQL Server. Se utilizan comúnmente en informes, paneles
+                de control y otras aplicaciones de análisis de datos para
+                resumir y visualizar información de manera significativa.
+              </p>
             </section>
 
             <div id="ejemplo3" class="my-4">
@@ -410,7 +429,7 @@
                 >
               </button>
             </div>
-            
+
             <div id="ejemplo3" class="my-4">
               <h4>Funciones MIN, MAX, SUM, COUNT, AVG</h4>
               <p>
@@ -471,19 +490,30 @@
           <div id="ejemplo4" class="my-4 contenedor-ejemplo">
             <section class="section" id="ejemplo4">
               <h2>Tablas temporales</h2>
-              <p>Son tablas que existen temporalmente durante la ejecución de una sesión o un bloque de código en la base de datos.
-                Estas tablas proporcionan un espacio de trabajo temporal donde se pueden almacenar datos temporales o intermedios para su posterior procesamiento, análisis o manipulación.</p>
+              <p>
+                Son tablas que existen temporalmente durante la ejecución de una
+                sesión o un bloque de código en la base de datos. Estas tablas
+                proporcionan un espacio de trabajo temporal donde se pueden
+                almacenar datos temporales o intermedios para su posterior
+                procesamiento, análisis o manipulación.
+              </p>
             </section>
 
             <div id="ejemplo4" class="my-4">
               <h4>INTO #</h4>
-              <p>La cláusula INTO # se utiliza en SQL Server para crear una tabla temporal dentro de una consulta SELECT y copiar los resultados de esa consulta en la tabla temporal recién creada. 
-                Esta cláusula es útil cuando deseas almacenar los resultados de una consulta en una tabla temporal para su posterior uso dentro de la misma sesión de la base de datos.
-            </p>
-            <p>
+              <p>
+                La cláusula INTO # se utiliza en SQL Server para crear una tabla
+                temporal dentro de una consulta SELECT y copiar los resultados
+                de esa consulta en la tabla temporal recién creada. Esta
+                cláusula es útil cuando deseas almacenar los resultados de una
+                consulta en una tabla temporal para su posterior uso dentro de
+                la misma sesión de la base de datos.
+              </p>
+              <p>
                 <strong>Ejemplo:</strong>
-                Obtener ventas mensuales para los Productos Top 10. Cada mes se muestra en una fila diferente.
-            </p>
+                Obtener ventas mensuales para los Productos Top 10. Cada mes se
+                muestra en una fila diferente.
+              </p>
               <div class="codigo-fuente">
                 <pre>
 
@@ -523,21 +553,31 @@
           <div id="ejemplo5" class="my-4 contenedor-ejemplo">
             <section class="section" id="ejemplo5">
               <h2>Procedimientos almacenados</h2>
-              <p>Son conjuntos de instrucciones SQL que se almacenan en la base de datos del servidor. 
-                Estas instrucciones se agrupan lógicamente en un solo objeto y se pueden ejecutar repetidamente cuando sea necesario. 
-                Los procedimientos almacenados son útiles para realizar tareas repetitivas, procesos complejos, y operaciones que requieren múltiples pasos dentro de la base de datos.
+              <p>
+                Son conjuntos de instrucciones SQL que se almacenan en la base
+                de datos del servidor. Estas instrucciones se agrupan
+                lógicamente en un solo objeto y se pueden ejecutar repetidamente
+                cuando sea necesario. Los procedimientos almacenados son útiles
+                para realizar tareas repetitivas, procesos complejos, y
+                operaciones que requieren múltiples pasos dentro de la base de
+                datos.
               </p>
             </section>
 
             <div id="ejemplo5" class="my-4">
               <h4>CREATE PROCEDURE</h4>
-              <p>Se utiliza para crear un procedimiento almacenado en la base de datos.  
-                Estos procedimientos son útiles para realizar tareas complejas, lógicas de negocios, o secuencias de comandos que se ejecutan con frecuencia.
-            </p>
-            <p>
+              <p>
+                Se utiliza para crear un procedimiento almacenado en la base de
+                datos. Estos procedimientos son útiles para realizar tareas
+                complejas, lógicas de negocios, o secuencias de comandos que se
+                ejecutan con frecuencia.
+              </p>
+              <p>
                 <strong>Ejemplo:</strong>
-                Creamos un procedimiento almacenado, 
-            </p>
+                Creamos un procedimiento almacenado para obtener las ventas
+                mensuales para los diez producots más vendidos en un periodo.
+                Cada mes se muestra en una fila diferente.
+              </p>
 
               <div class="codigo-fuente">
                 <pre>
@@ -545,27 +585,27 @@
         <span class="sql-statement">CREATE PROCEDURE</span> ObtenerVentasDeLosProductosMasVendidos 
             @FechaDesde	<span class="sql-statement">DATETIME</span>,
             @FechaHasta <span class="sql-statement">DATETIME</span>
-            <span class="sql-statement">AS</span>
+        <span class="sql-statement">AS</span>
 
-            <span class="sql-statement">SELECT TOP</span> 10 P.ProductID, p.Name <span class="sql-statement">AS</span> ProductName, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity
-            <span class="sql-statement">INTO</span> #Top10  
-            <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
+        <span class="sql-statement">SELECT TOP</span> 10 P.ProductID, p.Name <span class="sql-statement">AS</span> ProductName, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity
+        <span class="sql-statement">INTO</span> #Top10  
+        <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
             <span class="sql-operator">INNER JOIN</span> Sales.SalesOrderHeader H <span class="sql-statement">ON</span> D.SalesOrderID = H.SalesOrderID
             <span class="sql-operator">INNER JOIN</span> Production.Product P <span class="sql-statement">ON</span> D.ProductID = P.ProductID
-            <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> @FechaDesde <span class="sql-operator">AND</span> @FechaHasta
-            <span class="sql-statement">GROUP BY</span> P.ProductID, p.Name 
-            <span class="sql-statement">ORDER BY</span> ProductQuantity <span class="sql-statement">DESC</span>
+        <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> @FechaDesde <span class="sql-operator">AND</span> @FechaHasta
+        <span class="sql-statement">GROUP BY</span> P.ProductID, p.Name 
+        <span class="sql-statement">ORDER BY</span> ProductQuantity <span class="sql-statement">DESC</span>
 
 
-            <span class="sql-statement">SELECT</span> P.ProductID, P.ProductName, P.ProductQuantity, <span class="sql-function">MONTH</span>(H.OrderDate) <span class="sql-statement">AS</span> Month, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity
-            <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
+        <span class="sql-statement">SELECT</span> P.ProductID, P.ProductName, P.ProductQuantity, <span class="sql-function">MONTH</span>(H.OrderDate) <span class="sql-statement">AS</span> Month, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity
+        <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
             <span class="sql-operator">INNER JOIN</span> Sales.SalesOrderHeader H <span class="sql-statement">ON</span> D.SalesOrderID = H.SalesOrderID
             <span class="sql-operator">INNER JOIN</span> #TOP10 P <span class="sql-statement">ON</span> D.ProductID = P.ProductID
-            <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> @FechaDesde <span class="sql-operator">AND</span> @FechaHasta
-            <span class="sql-statement">GROUP BY</span> P.ProductID, P.ProductName, P.ProductQuantity, <span class="sql-function">MONTH</span>(H.OrderDate)
-            <span class="sql-statement">ORDER BY</span> 1,2,3,4
+        <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> @FechaDesde <span class="sql-operator">AND</span> @FechaHasta
+        <span class="sql-statement">GROUP BY</span> P.ProductID, P.ProductName, P.ProductQuantity, <span class="sql-function">MONTH</span>(H.OrderDate)
+        <span class="sql-statement">ORDER BY</span> 1,2,3,4
 
-            <span class="sql-statement">DROP TABLE</span> #Top10 
+        <span class="sql-statement">DROP TABLE</span> #Top10 
               </pre>
               </div>
               <button type="button" class="btn btn-light">
@@ -578,52 +618,81 @@
               </button>
             </div>
             <div id="ejemplo5" class="my-4">
-                <h4>EXEC</h4>
-                <p>Se utiliza para ejecutar un procedimiento almacenado en SQL Server. 
-                   Puedes utilizar EXEC seguido del nombre del procedimiento almacenado y cualquier parámetro que necesite el procedimiento.</p>
-                <p>
-                    <strong>Ejemplo 1:</strong>
-                    Obtener la ejecucion de del procedimiento almacenado anterior.
-                </p>
-                <div class="codigo-fuente">
-                  <pre>
+              <h4>EXEC</h4>
+              <p>
+                Se utiliza para ejecutar un procedimiento almacenado en SQL
+                Server. Puedes utilizar EXEC seguido del nombre del
+                procedimiento almacenado y cualquier parámetro que necesite el
+                procedimiento.
+              </p>
+              <p>
+                <strong>Ejemplo:</strong>
+                Ejecutar el procedimiento almacenado creado en el ejemplo
+                anterior
+              </p>
+              <div class="codigo-fuente">
+                <pre>
                     
         <span class="sql-information">-- Ejecutar el procedimiento almacenado, pasando los valores de los parámetros</span>
         <span class="sql-statement">EXEC</span> ObtenerVentasDeLosProductosMasVendidos <span class="sql-string">'2012-01-01'</span>, <span class="sql-string">'2012-12-31'</span>     
                   </pre>
-                </div>
               </div>
-              <div id="ejemplo5" class="my-4">
-                <h4>EXEC</h4>
-                    <strong>Ejemplo 2:</strong>
-                    Recuperamos en forma de ejemplo una ejecucion de un procedimiento almacenado de la base de datos.
-                </p>
-                <div class="codigo-fuente">
-                  <pre>
+            </div>
+            <div id="ejemplo5" class="my-4">
+              <h4>SP_HELPTEXT</h4>
+              <p>
+                SP_HELPTEXT es un procedimiento almacenado provisto por SQL
+                Server que nos permite recuperar el código fuente de un
+                procedimiento almacenado para poder revisarlo o luego editarlo.
+              </p>
+              <p>
+                <strong>Ejemplo:</strong> Recuperar el código fuente del
+                procedimiento almacenado
+                "HumanResources.uspUpdateEmployeeHireInfo"
+              </p>
+
+              <div class="codigo-fuente">
+                <pre>
                     
         <span class="sql-information"> -- Recuperar el código de un procedimiento almacenado</span>
-        <span class="sql-statement">EXEC</span>sp_helptext [HumanResources.uspUpdateEmployeeHireInfo]
+        <span class="sql-statement">EXEC</span> sp_helptext [HumanResources.uspUpdateEmployeeHireInfo]
                   </pre>
-                </div>
               </div>
+            </div>
           </div>
           <div id="ejemplo6" class="my-4 contenedor-ejemplo">
             <section class="section" id="ejemplo6">
               <h2>Creación y modificación de tablas</h2>
-              <p>La creación y modificación de tablas sirve para diseñar y definir la estructura de las bases de datos, 
-                 lo que permite almacenar, organizar y gestionar datos de manera eficiente.
+              <p>
+                La creación y modificación de tablas sirve para diseñar y
+                definir la estructura de las bases de datos, lo que permite
+                almacenar, organizar y gestionar datos de manera eficiente.
+              </p>
+              <p>
+                <strong
+                  >Estas instrucciones son especialmente importantes cuando
+                  queremos trasladar los cambios de la base de datos de un
+                  ambiente a otro.</strong
+                >
+                Por ejemplo, cuando terminamos una tarea en nuestro ambiente de
+                desarrollo, debemos proveer scripts de BD para actualizar la
+                base de datos en el ambiente de Testing/QA, y luego el ambiente
+                de Producción.
               </p>
             </section>
 
             <div id="ejemplo6" class="my-4">
               <h4>CREATE TABLE</h4>
-              <p>Se utiliza para crear una nueva tabla en una base de datos. 
-                Esta instrucción es fundamental en el diseño y la estructuración de bases de datos relacionales, 
-                ya que define la estructura y el esquema de la tabla, incluidas las columnas y las restricciones.</p>
-                <p>
-                    <strong>Ejemplo:</strong>
-                    Obtener la creacion de una tabla "Personas" siempre y cuando no exista.
-                </p>
+              <p>
+                Se utiliza para crear una nueva tabla en una base de datos. Esta
+                instrucción es fundamental en el diseño y la estructuración de
+                bases de datos relacionales, ya que define la estructura y el
+                esquema de la tabla, incluidas las columnas y las restricciones.
+              </p>
+              <p>
+                <strong>Ejemplo:</strong>
+                Crear la tabla "Personas" siempre y cuando no exista previamente
+              </p>
               <div class="codigo-fuente">
                 <pre>
 
@@ -668,18 +737,27 @@
               </button>
             </div>
             <div id="ejemplo6" class="my-4">
-                <h4>ALTER TABLE</h4>
-                <p>
-                    Se utiliza para realizar modificaciones en una tabla existente. 
-                    Con ALTER TABLE, puedes agregar, modificar o eliminar columnas, 
-                    así como también establecer restricciones y realizar otras modificaciones en la estructura de la tabla. 
-                </p>
-                <p>
-                    <strong>Ejemplo:</strong>
-                    Modificó una tabla existente agregando una nueva columna.
-                </p>
-                <div class="codigo-fuente">
-                  <pre>
+              <h4>ALTER TABLE</h4>
+              <p>
+                Se utiliza para realizar modificaciones en una tabla existente.
+                Con ALTER TABLE, puedes agregar, modificar o eliminar columnas,
+                así como también establecer restricciones y realizar otras
+                modificaciones en la estructura de la tabla.
+              </p>
+              <p>
+                <strong>Ejemplo:</strong>
+                Modificó una tabla existente agregando una nueva columna con
+                nombre "IdLocalidad"
+              </p>
+              <p>
+                <strong>Nota importante:</strong> En este ejemplo creo la tabla,
+                y luego la modifico. Lo hice de esta manera para tener
+                disponible la tabla a modificar en el Playground, de lo
+                contrario la tabla no existiría en la base de datos
+                AdventureWorks
+              </p>
+              <div class="codigo-fuente">
+                <pre>
 
         <span class="sql-statement">IF</span> <span class="sql-operator">NOT EXISTS</span> (<span class="sql-statement">SELECT TOP</span> 1 1 <span class="sql-statement">FROM</span> <span class="sql-information">INFORMATION_SCHEMA.TABLES</span> <span class="sql-statement">WHERE</span> TABLE_NAME = <span class="sql-string">'Personas'</span> <span class="sql-operator">AND</span> TABLE_SCHEMA = <span class="sql-string">'dbo'</span>) 
         <span class="sql-statement">BEGIN</span>   
@@ -721,16 +799,16 @@
         <span class="sql-information">-- Solo para mostrar que la columna existe en la Tabla</span>
         <span class="sql-statement">SELECT</span> * <span class="sql-statement">FROM</span> dbo.Personas
                   </pre>
-                </div>
-                <button type="button" class="btn btn-light">
-                  <a
-                    href="https://dbfiddle.uk/2jtGIc2A"
-                    target="_blank"
-                    style="text-decoration: none; color: inherit"
-                    >Ver en Playground</a
-                  >
-                </button>
               </div>
+              <button type="button" class="btn btn-light">
+                <a
+                  href="https://dbfiddle.uk/2jtGIc2A"
+                  target="_blank"
+                  style="text-decoration: none; color: inherit"
+                  >Ver en Playground</a
+                >
+              </button>
+            </div>
           </div>
         </main>
       </div>
