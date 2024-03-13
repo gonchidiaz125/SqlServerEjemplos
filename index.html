@@ -344,11 +344,10 @@
               <div id="ejemplo2" class="my-4">
                 <h4>WHERE filtrando por LIKE</h4>
                 <p> La cláusula LIKE se utiliza para buscar patrones de texto en una columna. 
-                    Puedes usar % como comodín para representar cero o más caracteres, 
-                    o _ para representar un solo carácter.
+                    Puedes usar " % "  como comodín para representar cero o más caracteres. 
                 </p>
                 <p> <strong>Ejemplo:</strong> 
-                    Obtener todos las personas cuyos nombres y apellidos comienzen con un patrón.
+                    Obtener todos las personas cuyos nombres y apellidos comiencen con un patrón.
                 </p>
                 <div class="codigo-fuente">
                   <pre>
@@ -531,20 +530,82 @@
             </section>
 
             <div id="ejemplo5" class="my-4">
-              <h4>Sección 4</h4>
-              <p>Contenido de la sección 2...</p>
+              <h4>CREATE PROCEDURE</h4>
+              <p>Se utiliza para crear un procedimiento almacenado en la base de datos.  
+                Estos procedimientos son útiles para realizar tareas complejas, lógicas de negocios, o secuencias de comandos que se ejecutan con frecuencia.
+            </p>
+            <p>
+                <strong>Ejemplo:</strong>
+                Creamos un procedimiento almacenado, 
+            </p>
+
               <div class="codigo-fuente">
-                <pre></pre>
+                <pre>
+
+        <span class="sql-statement">CREATE PROCEDURE</span> ObtenerVentasDeLosProductosMasVendidos 
+            @FechaDesde	<span class="sql-statement">DATETIME</span>,
+            @FechaHasta <span class="sql-statement">DATETIME</span>
+            <span class="sql-statement">AS</span>
+
+            <span class="sql-statement">SELECT TOP</span> 10 P.ProductID, p.Name <span class="sql-statement">AS</span> ProductName, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity
+            <span class="sql-statement">INTO</span> #Top10  
+            <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
+            <span class="sql-operator">INNER JOIN</span> Sales.SalesOrderHeader H <span class="sql-statement">ON</span> D.SalesOrderID = H.SalesOrderID
+            <span class="sql-operator">INNER JOIN</span> Production.Product P <span class="sql-statement">ON</span> D.ProductID = P.ProductID
+            <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> @FechaDesde <span class="sql-operator">AND</span> @FechaHasta
+            <span class="sql-statement">GROUP BY</span> P.ProductID, p.Name 
+            <span class="sql-statement">ORDER BY</span> ProductQuantity <span class="sql-statement">DESC</span>
+
+
+            <span class="sql-statement">SELECT</span> P.ProductID, P.ProductName, P.ProductQuantity, <span class="sql-function">MONTH</span>(H.OrderDate) <span class="sql-statement">AS</span> Month, <span class="sql-function">SUM</span>(D.OrderQty) <span class="sql-statement">AS</span> ProductQuantity
+            <span class="sql-statement">FROM</span> Sales.SalesOrderDetail D
+            INNER JOIN Sales.SalesOrderHeader H <span class="sql-statement">ON</span> D.SalesOrderID = H.SalesOrderID
+            INNER JOIN #TOP10 P <span class="sql-statement">ON</span> D.ProductID = P.ProductID
+            <span class="sql-statement">WHERE</span> H.OrderDate <span class="sql-operator">BETWEEN</span> @FechaDesde <span class="sql-operator">AND</span> @FechaHasta
+            <span class="sql-statement">GROUP BY</span> P.ProductID, P.ProductName, P.ProductQuantity, <span class="sql-function">MONTH</span>(H.OrderDate)
+            <span class="sql-statement">ORDER BY</span> 1,2,3,4
+
+            <span class="sql-statement">DROP TABLE</span> #Top10 
+              </pre>
               </div>
               <button type="button" class="btn btn-light">
                 <a
-                  href=""
+                  href="https://dbfiddle.uk/Qz3GmpnZ"
                   target="_blank"
                   style="text-decoration: none; color: inherit"
                   >Ver en Playground</a
                 >
               </button>
             </div>
+            <div id="ejemplo5" class="my-4">
+                <h4>EXEC</h4>
+                <p>Se utiliza para ejecutar un procedimiento almacenado en SQL Server. 
+                   Puedes utilizar EXEC seguido del nombre del procedimiento almacenado y cualquier parámetro que necesite el procedimiento.</p>
+                <p>
+                    <strong>Ejemplo 1:</strong>
+                    Obtener la ejecucion de del procedimiento almacenado anterior.
+                </p>
+                <div class="codigo-fuente">
+                  <pre>
+                    
+        <span class="sql-information">-- Ejecutar el procedimiento almacenado, pasando los valores de los parámetros</span>
+        <span class="sql-statement">EXEC</span> ObtenerVentasDeLosProductosMasVendidos <span class="sql-string">'2012-01-01'</span>, <span class="sql-string">'2012-12-31'</span>     
+                  </pre>
+                </div>
+              </div>
+              <div id="ejemplo5" class="my-4">
+                <h4>EXEC</h4>
+                    <strong>Ejemplo 2:</strong>
+                    Recuperamos en forma de ejemplo una ejecucion de un procedimiento almacenado de la base de datos.
+                </p>
+                <div class="codigo-fuente">
+                  <pre>
+                    
+        <span class="sql-information"> -- Recuperar el código de un procedimiento almacenado</span>
+        <span class="sql-statement">EXEC</span>sp_helptext [HumanResources.uspUpdateEmployeeHireInfo]
+                  </pre>
+                </div>
+              </div>
           </div>
           <div id="ejemplo6" class="my-4 contenedor-ejemplo">
             <section class="section" id="ejemplo6">
@@ -568,31 +629,31 @@
 
         <span class="sql-statement">IF</span> <span class="sql-operator">NOT EXISTS</span> (<span class="sql-statement">SELECT TOP</span> 1 1 <span class="sql-statement">FROM</span> <span class="sql-information">INFORMATION_SCHEMA.TABLES</span> <span class="sql-statement">WHERE</span> TABLE_NAME = <span class="sql-string">'Personas'</span> <span class="sql-operator">AND</span> TABLE_SCHEMA = <span class="sql-string">'dbo'</span>) 
         <span class="sql-statement">BEGIN</span>   
-        <span class="sql-statement">CREATE TABLE</span> [dbo].[Personas](
-                [Id] [int] <span class="sql-statement">IDENTITY</span>(1,1) <span class="sql-operator">NOT NULL,</span>
-                [Nombre] [varchar](50) <span class="sql-operator">NOT NULL,</span>
-                [Apellido] [varchar](50) <span class="sql-operator">NOT NULL,</span>
-                [Documento] [int] <span class="sql-operator">NOT NULL,</span>
-                [FechaNacimieto] [datetime] <span class="sql-operator">NULL,</span>
-                [Sexo] [varchar](1) <span class="sql-operator">NOT NULL,</span>
-                [Estado] [bit] <span class="sql-operator">NOT NULL,</span>
-                [FechaAlta] [datetime] <span class="sql-operator">NOT NULL,</span>
-                [IdUsuarioAlta] [int] <span class="sql-operator">NOT NULL,</span>
-                [FechaModificacion] [datetime] <span class="sql-operator">NULL,</span>
-                [IdUsuarioModificacion] [int] <span class="sql-operator">NULL,</span>
-                [FechaBaja] [datetime] <span class="sql-operator">NULL,</span>
-                [IdUsuarioBaja] [int] <span class="sql-operator">NULL,</span>
-                <span class="sql-statement">CONSTRAINT</span> [PK_Personas] <span class="sql-statement">PRIMARY KEY CLUSTERED</span> ([Id] <span class="sql-statement">ASC</span>))
+            <span class="sql-statement">CREATE TABLE</span> [dbo].[Personas](
+                    [Id] [int] <span class="sql-statement">IDENTITY</span>(1,1) <span class="sql-operator">NOT NULL,</span>
+                    [Nombre] [varchar](50) <span class="sql-operator">NOT NULL,</span>
+                    [Apellido] [varchar](50) <span class="sql-operator">NOT NULL,</span>
+                    [Documento] [int] <span class="sql-operator">NOT NULL,</span>
+                    [FechaNacimieto] [datetime] <span class="sql-operator">NULL,</span>
+                    [Sexo] [varchar](1) <span class="sql-operator">NOT NULL,</span>
+                    [Estado] [bit] <span class="sql-operator">NOT NULL,</span>
+                    [FechaAlta] [datetime] <span class="sql-operator">NOT NULL,</span>
+                    [IdUsuarioAlta] [int] <span class="sql-operator">NOT NULL,</span>
+                    [FechaModificacion] [datetime] <span class="sql-operator">NULL,</span>
+                    [IdUsuarioModificacion] [int] <span class="sql-operator">NULL,</span>
+                    [FechaBaja] [datetime] <span class="sql-operator">NULL,</span>
+                    [IdUsuarioBaja] [int] <span class="sql-operator">NULL,</span>
+                    <span class="sql-statement">CONSTRAINT</span> [PK_Personas] <span class="sql-statement">PRIMARY KEY CLUSTERED</span> ([Id] <span class="sql-statement">ASC</span>))
+            
+            <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_Estado]  <span class="sql-statement">DEFAULT</span> ((1)) <span class="sql-statement">FOR</span> [Estado]
+            
+            <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_FechaAlta]  <span class="sql-statement">DEFAULT</span> (<span class="sql-function">getdate</span>()) <span class="sql-statement">FOR</span> [FechaAlta]
         
-        <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_Estado]  <span class="sql-statement">DEFAULT</span> ((1)) <span class="sql-statement">FOR</span> [Estado]
-        
-        <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_FechaAlta]  <span class="sql-statement">DEFAULT</span> (<span class="sql-function">getdate</span>()) <span class="sql-statement">FOR</span> [FechaAlta]
-    
-        <span class="sql-statement">PRINT</span> <span class="sql-string">'La tabla Personas fue creada con éxito'</span>
+            <span class="sql-statement">PRINT</span> <span class="sql-string">'La tabla Personas fue creada con éxito'</span>
         <span class="sql-statement">END</span>
         <span class="sql-statement">ELSE</span> 
         <span class="sql-statement">BEGIN</span>
-        <span class="sql-statement">PRINT</span> <span class="sql-string">'La tabla Personas ya existe'</span>
+            <span class="sql-statement">PRINT</span> <span class="sql-string">'La tabla Personas ya existe'</span>
         <span class="sql-statement">END </span>
 
                 </pre>
@@ -607,46 +668,49 @@
               </button>
             </div>
             <div id="ejemplo6" class="my-4">
-                <h4>Sección 4</h4>
-                <p>Contenido de la sección 2...</p>
+                <h4>ALTER TABLE</h4>
+                <p>
+                    <strong>Ejemplo:</strong>
+                    Obtener
+                </p>
                 <div class="codigo-fuente">
                   <pre>
 
         <span class="sql-statement">IF</span> <span class="sql-operator">NOT EXISTS</span> (<span class="sql-statement">SELECT TOP</span> 1 1 <span class="sql-statement">FROM</span> <span class="sql-information">INFORMATION_SCHEMA.TABLES</span> <span class="sql-statement">WHERE</span> TABLE_NAME = <span class="sql-string">'Personas'</span> <span class="sql-operator">AND</span> TABLE_SCHEMA = <span class="sql-string">'dbo'</span>) 
         <span class="sql-statement">BEGIN</span>   
-        <span class="sql-statement">CREATE TABLE</span> [dbo].[Personas](
-            [Id] [int] <span class="sql-statement">IDENTITY</span>(1,1) <span class="sql-operator">NOT NULL,</span>
-            [Nombre] [varchar](50) <span class="sql-operator">NOT NULL,</span>
-            [Apellido] [varchar](50) <span class="sql-operator">NOT NULL,</span>
-            [Documento] [int] <span class="sql-operator">NOT NULL,</span>
-            [FechaNacimieto] [datetime] <span class="sql-operator">NULL,</span>
-            [Sexo] [varchar](1) <span class="sql-operator">NOT NULL,</span>
-            [Estado] [bit] <span class="sql-operator">NOT NULL,</span>
-            [FechaAlta] [datetime] <span class="sql-operator">NOT NULL,</span>
-            [IdUsuarioAlta] [int] <span class="sql-operator">NOT NULL,</span>
-            [FechaModificacion] [datetime] <span class="sql-operator">NULL,</span>
-            [IdUsuarioModificacion] [int] <span class="sql-operator">NULL,</span>
-            [FechaBaja] [datetime] <span class="sql-operator">NULL,</span>
-            [IdUsuarioBaja] [int] <span class="sql-operator">NULL,</span>
-        <span class="sql-statement">CONSTRAINT</span> [PK_Personas] <span class="sql-statement">PRIMARY KEY CLUSTERED</span> ([Id] <span class="sql-statement">ASC</span>))
+            <span class="sql-statement">CREATE TABLE</span> [dbo].[Personas](
+                [Id] [int] <span class="sql-statement">IDENTITY</span>(1,1) <span class="sql-operator">NOT NULL,</span>
+                [Nombre] [varchar](50) <span class="sql-operator">NOT NULL,</span>
+                [Apellido] [varchar](50) <span class="sql-operator">NOT NULL,</span>
+                [Documento] [int] <span class="sql-operator">NOT NULL,</span>
+                [FechaNacimieto] [datetime] <span class="sql-operator">NULL,</span>
+                [Sexo] [varchar](1) <span class="sql-operator">NOT NULL,</span>
+                [Estado] [bit] <span class="sql-operator">NOT NULL,</span>
+                [FechaAlta] [datetime] <span class="sql-operator">NOT NULL,</span>
+                [IdUsuarioAlta] [int] <span class="sql-operator">NOT NULL,</span>
+                [FechaModificacion] [datetime] <span class="sql-operator">NULL,</span>
+                [IdUsuarioModificacion] [int] <span class="sql-operator">NULL,</span>
+                [FechaBaja] [datetime] <span class="sql-operator">NULL,</span>
+                [IdUsuarioBaja] [int] <span class="sql-operator">NULL,</span>
+            <span class="sql-statement">CONSTRAINT</span> [PK_Personas] <span class="sql-statement">PRIMARY KEY CLUSTERED</span> ([Id] <span class="sql-statement">ASC</span>))
 
-        <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_Estado]  <span class="sql-statement">DEFAULT</span> ((1)) <span class="sql-statement">FOR</span> [Estado]
+            <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_Estado]  <span class="sql-statement">DEFAULT</span> ((1)) <span class="sql-statement">FOR</span> [Estado]
 
-        <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_FechaAlta]  <span class="sql-statement">DEFAULT</span> (<span class="sql-function">getdate</span>()) <span class="sql-statement">FOR</span> [FechaAlta]
-
+            <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD  CONSTRAINT</span> [DF_Personas_FechaAlta]  <span class="sql-statement">DEFAULT</span> (<span class="sql-function">getdate</span>()) <span class="sql-statement">FOR</span> [FechaAlta]
         <span class="sql-statement">END</span>
         <span class="sql-statement">ELSE</span> 
         <span class="sql-statement">BEGIN</span>
-        <span class="sql-statement">PRINT</span> <span class="sql-string">'La tabla Personas ya existe'</span>
+            <span class="sql-statement">PRINT</span> <span class="sql-string">'La tabla Personas ya existe'</span>
         <span class="sql-statement">END </span>
+
         <span class="sql-statement">IF</span> <span class="sql-operator">NOT EXISTS</span>(<span class="sql-statement">SELECT</span> 1 <span class="sql-statement">FROM</span> <span class="sql-information">INFORMATION_SCHEMA.COLUMNS</span> <span class="sql-statement">WHERE</span> TABLE_NAME = <span class="sql-string">'IdLocalidad'</span> <span class="sql-operator">AND</span> TABLE_SCHEMA = <span class="sql-string">'dbo'</span> <span class="sql-operator">AND</span> COLUMN_NAME = <span class="sql-string">'Personas'</span>)
-        <span class="sql-statement"></span>BEGIN	
-        <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD</span> [IdLocalidad] [int] <span class="sql-operator">NULL</span>     
-        <span class="sql-statement">PRINT</span> <span class="sql-string">'OK: La Columna IdLocalidad fue agregada a la tabla Personas con éxito'</span>
+        <span class="sql-statement">BEGIN</span>	
+            <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD</span> [IdLocalidad] [int] <span class="sql-operator">NULL</span>     
+            <span class="sql-statement">PRINT</span> <span class="sql-string">'OK: La Columna IdLocalidad fue agregada a la tabla Personas con éxito'</span>
         <span class="sql-statement">END</span>
         <span class="sql-statement">ELSE</span>
         <span class="sql-statement">BEGIN</span>
-        <span class="sql-statement">PRINT</span> <span class="sql-string">'ERROR: La tabla Personas ya tiene un columna con nombre IdLocalidad'</span>
+            <span class="sql-statement">PRINT</span> <span class="sql-string">'ERROR: La tabla Personas ya tiene un columna con nombre IdLocalidad'</span>
         <span class="sql-statement">END</span> 
 
         <span class="sql-information">-- Solo para mostrar que la columna existe en la Tabla</span>
