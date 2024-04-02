@@ -786,7 +786,7 @@
             <span class="sql-statement">PRINT</span> <span class="sql-string">'La tabla Personas ya existe'</span>
         <span class="sql-statement">END </span>
 
-        <span class="sql-statement">IF</span> <span class="sql-operator">NOT EXISTS</span>(<span class="sql-statement">SELECT</span> 1 <span class="sql-statement">FROM</span> <span class="sql-information">INFORMATION_SCHEMA.COLUMNS</span> <span class="sql-statement">WHERE</span> TABLE_NAME = <span class="sql-string">'IdLocalidad'</span> <span class="sql-operator">AND</span> TABLE_SCHEMA = <span class="sql-string">'dbo'</span> <span class="sql-operator">AND</span> COLUMN_NAME = <span class="sql-string">'Personas'</span>)
+        <span class="sql-statement">IF</span> <span class="sql-operator">NOT EXISTS</span>(<span class="sql-statement">SELECT</span> 1 <span class="sql-statement">FROM</span> <span class="sql-information">INFORMATION_SCHEMA.COLUMNS</span> <span class="sql-statement">WHERE</span> TABLE_NAME = <span class="sql-string">'Personas'</span> <span class="sql-operator">AND</span> TABLE_SCHEMA = <span class="sql-string">'dbo'</span> <span class="sql-operator">AND</span> COLUMN_NAME = <span class="sql-string">'IdLocalidad'</span>)
         <span class="sql-statement">BEGIN</span>	
             <span class="sql-statement">ALTER TABLE</span> [dbo].[Personas] <span class="sql-statement">ADD</span> [IdLocalidad] [int] <span class="sql-operator">NULL</span>     
             <span class="sql-statement">PRINT</span> <span class="sql-string">'OK: La Columna IdLocalidad fue agregada a la tabla Personas con éxito'</span>
